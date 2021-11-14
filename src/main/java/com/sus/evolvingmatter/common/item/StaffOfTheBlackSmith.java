@@ -34,14 +34,16 @@ public class StaffOfTheBlackSmith extends Item {
 
     @Override
     public InteractionResult interactLivingEntity(ItemStack itemStack, Player player, LivingEntity livingEntity, InteractionHand hand) {
-        livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 40), player);
+        if (!player.getCooldowns().isOnCooldown(this)) {
+            livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 40), player);
 
-        BlockState blockState = BlockInit.DISAPPEARING_ANVIL_BLOCK.get().defaultBlockState();
-        FallingBlockEntity fallingBlock = new FallingBlockEntity(livingEntity.level, livingEntity.getX(), livingEntity.getY() + 10, livingEntity.getZ(), blockState);
-        fallingBlock.time = 1;
-        fallingBlock.setHurtsEntities(3.0f, 40);
-        livingEntity.level.addFreshEntity(fallingBlock);
-
+            BlockState blockState = BlockInit.DISAPPEARING_ANVIL_BLOCK.get().defaultBlockState();
+            FallingBlockEntity fallingBlock = new FallingBlockEntity(livingEntity.level, livingEntity.getX(), livingEntity.getY() + 10, livingEntity.getZ(), blockState);
+            fallingBlock.time = 1;
+            fallingBlock.setHurtsEntities(3.0f, 40);
+            livingEntity.level.addFreshEntity(fallingBlock);
+            player.getCooldowns().addCooldown(this, 200);
+        }
         return super.interactLivingEntity(itemStack, player, livingEntity, hand);
     }
 

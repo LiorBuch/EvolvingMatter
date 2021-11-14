@@ -18,7 +18,7 @@ public class HeartMech {
 
     public static ItemLike setItemForLoot(){ //setting rarity and index
         Random r = new Random();
-        int rarity = r.nextInt(10);
+        int rarity = r.nextInt(25);
         if (rarity<12){    //common//
             int index = r.nextInt(9)+1;
             switch (index){

@@ -15,6 +15,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 
+import java.util.Random;
+
 public class HeartOfLuck extends Item {
 
     public HeartOfLuck(Properties p_41383_) {
@@ -30,28 +32,32 @@ public class HeartOfLuck extends Item {
         player.drop(itemStack, true, false);
         HeartMech.setCount(1);
         //FireWork Mechanism\\
+
         CompoundTag itemTag = new CompoundTag();
         CompoundTag fireworkTag = new CompoundTag();
         ListTag explosionListTag = new ListTag();
         CompoundTag explosionTag = new CompoundTag();
+        Random r = new Random();
 
-        explosionTag.putIntArray("Colors",new int[]{0xeb3434});
-        explosionTag.putIntArray("FadeColors",new int[]{0xffffff});
+        explosionTag.putIntArray("Colors", new int[]{0xeb3434});
+        explosionTag.putIntArray("FadeColors", new int[]{0xffffff});
         explosionTag.putByte("Flicker", (byte) 1);
         explosionTag.putByte("Trail", (byte) 1);
         explosionTag.putByte("Type", (byte) 2);
 
         explosionListTag.add(explosionTag);
 
-        fireworkTag.put("Explosions",explosionListTag);
-        fireworkTag.putByte("Flight", (byte) 2);
+        fireworkTag.put("Explosions", explosionListTag);
+        fireworkTag.putByte("Flight", (byte) 0);
 
-        itemTag.put("Fireworks",fireworkTag);
+        itemTag.put("Fireworks", fireworkTag);
 
-        ItemStack firework = new ItemStack(Items.FIREWORK_ROCKET, 1);
-        firework.setTag(itemTag);
-        FireworkRocketEntity fireworkEntity = new FireworkRocketEntity(level, player.getX(), player.getY(), player.getZ(),firework);
-        level.addFreshEntity(fireworkEntity);
+
+            ItemStack firework = new ItemStack(Items.FIREWORK_ROCKET, 1);
+            firework.setTag(itemTag);
+            FireworkRocketEntity fireworkEntity = new FireworkRocketEntity(level, player.getX(), player.getY()+0.4, player.getZ(), firework);
+            level.addFreshEntity(fireworkEntity);
+
         return super.use(level, player, handIn);
     }
 }
