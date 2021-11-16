@@ -1,8 +1,12 @@
 package com.sus.evolvingmatter.common.entity;
 
+import com.sus.evolvingmatter.EvolvingMatter;
 import com.sus.evolvingmatter.core.init.EntityInit;
+import com.sus.evolvingmatter.core.init.SoundInit;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -35,6 +39,8 @@ public class SoulGhost extends Animal implements FlyingAnimal {
         this.moveControl = new FlyingMoveControl(this, 20, true);
 
     }
+    public static final ResourceLocation LOOT_TABLE = new ResourceLocation(EvolvingMatter.MOD_ID,
+            "entities/soul_ghost");
 
     @Override
     protected void registerGoals() {
@@ -47,7 +53,7 @@ public class SoulGhost extends Animal implements FlyingAnimal {
     }
 
     public static AttributeSupplier.Builder createAttributes(){
-        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 6.0D).add(Attributes.FLYING_SPEED,0.6D);
+        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 6.0D).add(Attributes.FLYING_SPEED,0.6D).add(Attributes.MOVEMENT_SPEED,0.2D);
     }
 
     @Nullable
@@ -56,6 +62,28 @@ public class SoulGhost extends Animal implements FlyingAnimal {
         return EntityInit.SOUL_GHOST.get().create(serverLevel);
     }
 
+    @Nullable
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return SoundInit.SOUL_GHOST_AMBIENT.get();
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getHurtSound(DamageSource p_21239_) {
+        return SoundInit.SOUL_GHOST_HURT.get();
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getDeathSound() {
+        return SoundInit.SOUL_GHOST_DEATH.get();
+    }
+
+    @Override
+    protected ResourceLocation getDefaultLootTable() {
+        return LOOT_TABLE;
+    }
 
     @Override
     public boolean isFlying() {
