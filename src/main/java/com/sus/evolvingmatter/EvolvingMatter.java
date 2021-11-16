@@ -1,6 +1,7 @@
 package com.sus.evolvingmatter;
 
 import com.sus.evolvingmatter.core.init.BlockInit;
+import com.sus.evolvingmatter.core.init.EntityInit;
 import com.sus.evolvingmatter.core.init.ItemInit;
 import com.sus.evolvingmatter.core.init.ParticleInit;
 import net.minecraft.world.item.CreativeModeTab;
@@ -45,6 +46,7 @@ public class EvolvingMatter
         ItemInit.ITEMS.register(bus);
         BlockInit.BLOCKS.register(bus);
         ParticleInit.PARTICLE_TYPE.register(bus);
+        EntityInit.ENTITIES.register(bus);
     }
     public static final CreativeModeTab EvolvingMatterTab = new CreativeModeTab(MOD_ID) {
         @Override

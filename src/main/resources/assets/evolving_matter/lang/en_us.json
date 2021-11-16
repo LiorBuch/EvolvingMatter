@@ -2,5 +2,6 @@
   "item.evolving_matter.soul_stone": "Soul Stone",
   "tooltip.evolving_matter.dagger_of_noob.hold_shift": "Hold\u00A7e LEFT SHIFT \u00A7f for more information",
   "item.evolving_matter.heart_of_luck": "Heart Of Luck",
-  "item.evolving_matter.heart_of_mobs": "Heart Of Mobs"
+  "item.evolving_matter.heart_of_mobs": "Heart Of Mobs",
+  "entity.evolving_matter.soul_ghost": "Soul Ghost"
 }
