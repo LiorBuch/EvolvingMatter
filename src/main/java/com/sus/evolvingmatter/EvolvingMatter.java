@@ -41,8 +41,8 @@ public class EvolvingMatter
         // Register ourselves for server and other game events we are interested in
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         MinecraftForge.EVENT_BUS.register(this);
-        ItemInit.ITEMS.register(bus);
         BlockInit.BLOCKS.register(bus);
+        ItemInit.ITEMS.register(bus);
         ParticleInit.PARTICLE_TYPE.register(bus);
         EntityInit.ENTITIES.register(bus);
         SoundInit.SOUNDS.register(bus);

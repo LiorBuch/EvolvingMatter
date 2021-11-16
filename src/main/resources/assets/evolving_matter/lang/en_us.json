@@ -5,5 +5,7 @@
   "item.evolving_matter.heart_of_mobs": "Heart Of Mobs",
   "item.evolving_matter.soul_stone_shard": "Soul Stone Shard",
   "entity.evolving_matter.soul_ghost": "Soul Ghost",
-  "item.evolving_matter.soul_ghost_spawn_egg": "Soul Ghost Spawn Egg"
+  "item.evolving_matter.soul_ghost_spawn_egg": "Soul Ghost Spawn Egg",
+  "block.evolving_matter.soul_stone_ore": "Soul Stone Ore",
+  "block.evolving_matter.soul_stone_ore_deepslate": "Soul Stone Ore Deepslate"
 }

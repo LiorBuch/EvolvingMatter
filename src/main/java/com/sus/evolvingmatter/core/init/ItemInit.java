@@ -5,6 +5,7 @@ import com.sus.evolvingmatter.common.item.HeartOfLuck;
 import com.sus.evolvingmatter.common.item.HeartOfMobs;
 import com.sus.evolvingmatter.common.item.SoulStone;
 import com.sus.evolvingmatter.common.item.StaffOfTheBlackSmith;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.ForgeSpawnEggItem;
@@ -32,4 +33,10 @@ public class ItemInit {
    // public static final RegistryObject<Item> SOUL_STONE_BUNDLE = ITEMS.register("soul_stone_Bundle", () -> new Item(new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab)));
 
     //Blocks
+    public static final RegistryObject<BlockItem> SOUL_STONE_ORE_ITEM = ITEMS.register("soul_stone_ore",
+            () -> new BlockItem(BlockInit.SOUL_STONE_ORE.get(), new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab)));
+    public static final RegistryObject<BlockItem> SOUL_STONE_ORE_DEEPSLATE_ITEM = ITEMS.register("soul_stone_ore_deepslate",
+            () -> new BlockItem(BlockInit.SOUL_STONE_ORE_DEEPSLATE.get(), new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab)));
+    public static final RegistryObject<BlockItem> DISAPPEARING_ANVIL = ITEMS.register("disappearing_anvil_block",
+            () -> new BlockItem(BlockInit.DISAPPEARING_ANVIL_BLOCK.get(), new Item.Properties()));
 }

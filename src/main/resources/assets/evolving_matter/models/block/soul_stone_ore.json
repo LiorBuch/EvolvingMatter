@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "evolving mod:blocks/soul_stone_ore"
+    "all": "evolving_matter:blocks/soul_stone_ore"
   }
 }
