@@ -26,6 +26,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 
@@ -101,6 +102,11 @@ public class SoulGhost extends Animal implements FlyingAnimal {
         flyingpathnavigation.setCanFloat(false);
         flyingpathnavigation.setCanPassDoors(true);
         return flyingpathnavigation;
+    }
+
+    @Override
+    public boolean checkSpawnRules(LevelAccessor p_21686_, MobSpawnType p_21687_) {
+        return super.checkSpawnRules(p_21686_, p_21687_);
     }
 
     public boolean causeFallDamage(float p_148750_, float p_148751_, DamageSource p_148752_) {
