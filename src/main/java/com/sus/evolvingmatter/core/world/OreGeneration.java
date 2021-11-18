@@ -5,7 +5,6 @@ import com.sus.evolvingmatter.core.init.BlockInit;
 import net.minecraft.core.Registry;
 import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
@@ -31,13 +30,23 @@ public class OreGeneration {
 
     public static final RuleTest END_STONE_CONFIG = new BlockMatchTest(Blocks.END_STONE);
     public static final RuleTest STONE_CONFIG = new BlockMatchTest(Blocks.STONE);
+    public static final RuleTest OAK_LEAVES = new BlockMatchTest(Blocks.OAK_LEAVES);
 
+    //Ore registration
     public static void registerOres() {
         ConfiguredFeature<?, ?> soulStoneOre = Feature.ORE.configured(new OreConfiguration(List.of(OreConfiguration
                 .target(STONE_CONFIG, BlockInit.SOUL_STONE_ORE.get().defaultBlockState()),
                 OreConfiguration.target(OreConfiguration.Predicates.DEEPSLATE_ORE_REPLACEABLES,BlockInit.SOUL_STONE_ORE_DEEPSLATE.get().defaultBlockState())), 4))
                 .rangeUniform(VerticalAnchor.bottom(),VerticalAnchor.top()).squared().count(100);
         OVERWORLD_ORES.add(register("soul_stone_ore",soulStoneOre));
+
+        //        ConfiguredFeature<?, ?> soulStoneOre = Feature.ORE.configured(new OreConfiguration(List.of(OreConfiguration
+        //                .target(STONE_CONFIG, BlockInit.SOUL_STONE_ORE.get().defaultBlockState()),
+        //                OreConfiguration.target(OreConfiguration.Predicates.DEEPSLATE_ORE_REPLACEABLES,BlockInit.SOUL_STONE_ORE_DEEPSLATE.get().defaultBlockState())), 4))
+        //                .rangeUniform(VerticalAnchor.bottom(),VerticalAnchor.top()).squared().count(100);
+        //        OVERWORLD_ORES.add(register("soul_stone_ore",soulStoneOre));
+
+        //FadeAppleLeaves
 
     }
 
@@ -62,4 +71,10 @@ public class OreGeneration {
             }
         }
     }
+
+    //Vegetation register
+
+
+
+
 }

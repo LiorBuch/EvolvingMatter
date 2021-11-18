@@ -20,5 +20,4 @@ public class CommonModEvents {
     public static void commonSetup(FMLCommonSetupEvent event){
         event.enqueueWork(OreGeneration::registerOres);
     }
-
 }

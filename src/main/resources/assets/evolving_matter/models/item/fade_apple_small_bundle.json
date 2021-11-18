@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "evolving_matter:items/fade_apple_small_bundle"
+  }
+}
