@@ -29,11 +29,19 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import software.bernie.geckolib3.core.IAnimatable;
+import software.bernie.geckolib3.core.PlayState;
+import software.bernie.geckolib3.core.builder.AnimationBuilder;
+import software.bernie.geckolib3.core.controller.AnimationController;
+import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
+import software.bernie.geckolib3.core.manager.AnimationData;
+import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import javax.annotation.Nullable;
 import java.util.EnumSet;
 
-public class SoulGhost extends Animal implements FlyingAnimal {
+public class SoulGhost extends Animal implements FlyingAnimal,IAnimatable {
+    private AnimationFactory factory = new AnimationFactory(this);
 
     public SoulGhost(EntityType<? extends Animal> entityType, Level level) {
         super(entityType, level);
@@ -91,6 +99,25 @@ public class SoulGhost extends Animal implements FlyingAnimal {
         return true;
     }
 
+    //Animations Starts
+    private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event)
+    {
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.soul_ghost", true));
+        return PlayState.CONTINUE;
+    }
+
+    @Override
+    public void registerControllers(AnimationData data)
+    {
+        data.addAnimationController(new AnimationController(this, "controller", 0, this::predicate));
+    }
+
+    @Override
+    public AnimationFactory getFactory()
+    {
+        return this.factory;
+    }
+    //Animation Ends
     @Override
     protected PathNavigation createNavigation(Level p_27815_) {
         FlyingPathNavigation flyingpathnavigation = new FlyingPathNavigation(this, p_27815_) {

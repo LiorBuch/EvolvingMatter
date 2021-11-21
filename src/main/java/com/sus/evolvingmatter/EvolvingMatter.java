@@ -19,6 +19,7 @@ import net.minecraftforge.fmlserverevents.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import software.bernie.geckolib3.GeckoLib;
 
 import java.util.stream.Collectors;
 
@@ -46,6 +47,10 @@ public class EvolvingMatter
         ParticleInit.PARTICLE_TYPE.register(bus);
         EntityInit.ENTITIES.register(bus);
         SoundInit.SOUNDS.register(bus);
+
+
+        //Libraries
+        GeckoLib.initialize(); // for animations
     }
     public static final CreativeModeTab EvolvingMatterTab = new CreativeModeTab(MOD_ID) {
         @Override
@@ -59,6 +64,8 @@ public class EvolvingMatter
         // some preinit code
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+
+
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)
@@ -91,4 +98,5 @@ public class EvolvingMatter
             LOGGER.info("HELLO from Register Block");
         }
     }
+
 }
