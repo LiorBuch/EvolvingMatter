@@ -18,5 +18,6 @@ public class ClientModEvent {
 
     @SubscribeEvent
     public static void clientSetup(EntityRenderersEvent.RegisterLayerDefinitions event){
+
     }
 }

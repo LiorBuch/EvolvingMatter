@@ -39,4 +39,10 @@ public class ItemInit {
             () -> new BlockItem(BlockInit.SOUL_STONE_ORE_DEEPSLATE.get(), new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab)));
     public static final RegistryObject<BlockItem> DISAPPEARING_ANVIL = ITEMS.register("disappearing_anvil_block",
             () -> new BlockItem(BlockInit.DISAPPEARING_ANVIL_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<BlockItem> FADE_APPLE_LEAVES_ITEM = ITEMS.register("fade_apple_leaves",
+            () -> new BlockItem(BlockInit.FADE_APPLE_LEAVES.get(), new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab)));
+    public static final RegistryObject<BlockItem> CLOUD_ITEM = ITEMS.register("cloud_block1",
+            () -> new BlockItem(BlockInit.CLOUD_BLOCK.get(), new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab)));
+    public static final RegistryObject<BlockItem> EVOLUTION_STAND_BLOCK = ITEMS.register("evolution_stand_block",
+            () -> new BlockItem(BlockInit.EVOLUTION_STAND.get(), new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab)));
 }

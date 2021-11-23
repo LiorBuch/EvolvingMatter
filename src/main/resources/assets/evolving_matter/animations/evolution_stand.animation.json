@@ -1,0 +1,104 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.evolution_stand.particles": {
+			"loop": true,
+			"animation_length": 1,
+			"bones": {
+				"work1": {
+					"position": {
+						"0.0": {
+							"vector": [0, 0, -1]
+						},
+						"1.0": {
+							"vector": [0, 0, -15]
+						}
+					}
+				},
+				"work2": {
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.0": {
+							"vector": [15, 0, 0],
+							"easing": "linear"
+						}
+					}
+				},
+				"work3": {
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.0": {
+							"vector": [0, 0, 15]
+						}
+					}
+				},
+				"work4": {
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.0": {
+							"vector": [-15, 0, 0]
+						}
+					}
+				}
+			}
+		},
+		"animation.evolution_stand.book": {
+			"loop": true,
+			"animation_length": 5.2,
+			"bones": {
+				"book": {
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"2.6": {
+							"vector": [0, 2, 0],
+							"easing": "easeInOutQuad"
+						},
+						"5.2": {
+							"vector": [0, 0, 0],
+							"easing": "easeInOutQuad"
+						}
+					}
+				},
+				"page": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.48": {
+							"vector": [0, 132.5, 0]
+						}
+					}
+				},
+				"rightcover": {
+					"position": {
+						"vector": [0, 0, 0]
+					}
+				},
+				"page2": {
+					"rotation": {
+						"0.24": {
+							"vector": [0, 0, 0]
+						},
+						"0.76": {
+							"vector": [0, 132.5, 0]
+						},
+						"2.08": {
+							"vector": [0, 132.5, 0]
+						},
+						"2.6": {
+							"vector": [0, -5, 0]
+						}
+					}
+				}
+			}
+		}
+	}
+}

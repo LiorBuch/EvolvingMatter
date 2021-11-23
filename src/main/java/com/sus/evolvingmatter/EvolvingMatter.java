@@ -1,7 +1,9 @@
 package com.sus.evolvingmatter;
 
+import com.sus.evolvingmatter.client.container.screen.EvolutionStandScreen;
 import com.sus.evolvingmatter.core.init.*;
 import com.sus.evolvingmatter.core.world.OreGeneration;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
@@ -47,6 +49,8 @@ public class EvolvingMatter
         ParticleInit.PARTICLE_TYPE.register(bus);
         EntityInit.ENTITIES.register(bus);
         SoundInit.SOUNDS.register(bus);
+        BlockEntityInit.BLOCK_ENTITIES.register(bus);
+        ContainerInit.CONTAINERS.register(bus);
 
 
         //Libraries
@@ -61,11 +65,7 @@ public class EvolvingMatter
 
     private void setup(final FMLCommonSetupEvent event)
     {
-        // some preinit code
-        LOGGER.info("HELLO FROM PREINIT");
-        LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
-
-
+        MenuScreens.register(ContainerInit.EVOLUTION_STAND_MENU.get(), EvolutionStandScreen::new);
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)
