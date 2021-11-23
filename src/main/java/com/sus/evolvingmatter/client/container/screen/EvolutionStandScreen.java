@@ -28,7 +28,7 @@ public class EvolutionStandScreen extends AbstractContainerScreen<EvolutionStand
 
     @Override
     protected void renderLabels(PoseStack matrixStack, int mouseX, int mouseY) {
-        drawString(matrixStack, Minecraft.getInstance().font, "Energy", 10, 10, 0xffffff);
+        drawString(matrixStack, Minecraft.getInstance().font, "Energy", 2, 2, 0xffffff);
     }
 
     @Override //background render relative

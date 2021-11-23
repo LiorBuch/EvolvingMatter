@@ -10,7 +10,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-public class SoulStone extends Item {
+public class SoulStone extends Item implements IEvolvingItem.IMaterial {
     public SoulStone(Properties p_41383_) {
         super(p_41383_);
     }

@@ -6,7 +6,7 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.Item;
 
-public class FadeApple extends Item {
+public class FadeApple extends Item implements IEvolvingItem.ICatalyst {
     public FadeApple(Properties p_41383_) {
         super(p_41383_);
     }

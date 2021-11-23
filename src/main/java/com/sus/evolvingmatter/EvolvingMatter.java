@@ -30,7 +30,7 @@ import java.util.stream.Collectors;
 public class EvolvingMatter
 {
     // Directly reference a log4j logger.
-    private static final Logger LOGGER = LogManager.getLogger();
+    public static final Logger LOGGER = LogManager.getLogger();
     public static final String MOD_ID = "evolving_matter";
 
     public EvolvingMatter() {
@@ -51,6 +51,7 @@ public class EvolvingMatter
         SoundInit.SOUNDS.register(bus);
         BlockEntityInit.BLOCK_ENTITIES.register(bus);
         ContainerInit.CONTAINERS.register(bus);
+        AttributeInit.ATTRIBUTES.register(bus);
 
 
         //Libraries

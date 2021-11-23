@@ -18,4 +18,5 @@ public class ContainerInit {
         Level world = inv.player.getCommandSenderWorld();
         return new EvolutionStandMenu(windowId, world, pos, inv, inv.player);
     }));
+
 }
