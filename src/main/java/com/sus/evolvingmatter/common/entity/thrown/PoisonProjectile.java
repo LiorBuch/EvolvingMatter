@@ -1,12 +1,13 @@
 package com.sus.evolvingmatter.common.entity.thrown;
 
 import com.mojang.math.Vector3f;
+import com.sus.evolvingmatter.common.item.ZenHealth;
 import com.sus.evolvingmatter.core.init.EntityInit;
 import com.sus.evolvingmatter.core.init.ItemInit;
-import com.sus.evolvingmatter.util.ModDamage;
+import com.sus.evolvingmatter.util.ModDamageSource;
+import com.sus.evolvingmatter.util.ProjectileDamage;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.DustParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -23,7 +24,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.event.ForgeEventFactory;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -136,17 +136,19 @@ public class PoisonProjectile extends AbstractPoisonProjectile implements IAnima
         if(!level.isClientSide) {
             Entity entity = result.getEntity();
             Entity owner = getOwner();
-            if (entity instanceof LivingEntity){
-                if (((LivingEntity) entity).getMobType()== MobType.UNDEAD)
-                ((LivingEntity) entity).addEffect(new MobEffectInstance(MobEffects.REGENERATION,80,1));
-                else
-                    ((LivingEntity) entity).addEffect(new MobEffectInstance(MobEffects.POISON,80,1));
-            }
+            ((LivingEntity) entity).addEffect(new MobEffectInstance(MobEffects.POISON,80,1));
+            entity.hurt(ModDamageSource.ZEN_DAMAGE,50F);
+
+                /*
             if (owner instanceof Player player) {
-                player.hurt(ModDamage.poisonDamage(this, owner), 0.0f);
+                player.hurt(ProjectileDamage.poisonDamage(this, owner), 0.0f);
+                player.hurt(ModDamageSource.zenDamage(owner,entity),50F);
             } else {
-                entity.hurt(ModDamage.poisonDamage(this, owner), 2.0f);
-            }
+                entity.hurt(ProjectileDamage.poisonDamage(this, owner), 2.0f);
+                entity.hurt(ModDamageSource.zenDamage(owner,entity),50F);
+
+
+            } */
 
         }
     }

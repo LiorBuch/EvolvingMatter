@@ -1,12 +1,15 @@
 package com.sus.evolvingmatter.common.item;
 
 import com.sus.evolvingmatter.common.entity.thrown.PoisonProjectile;
+import com.sus.evolvingmatter.util.IDMG;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.*;
 import net.minecraft.world.item.Item;
@@ -40,7 +43,7 @@ public class StaffOfArrows extends Item {
         world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.LLAMA_SPIT, SoundSource.NEUTRAL, 0.5F, 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
         if(!world.isClientSide) {
             PoisonProjectile poisonProjectile = new PoisonProjectile(player, player.getX(), player.getY()+1, player.getZ(), 0.0D, -0.8D, 0.0D, world);
-            poisonProjectile.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 0.0F); //3.5
+            poisonProjectile.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 0.0F);
             world.addFreshEntity(poisonProjectile);
         }
         return super.use(world, player, hand);

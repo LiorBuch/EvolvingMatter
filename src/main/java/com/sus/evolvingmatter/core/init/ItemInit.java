@@ -1,6 +1,7 @@
 package com.sus.evolvingmatter.core.init;
 
 import com.sus.evolvingmatter.EvolvingMatter;
+import com.sus.evolvingmatter.common.item.ZenHealth;
 import com.sus.evolvingmatter.common.item.*;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -26,6 +27,7 @@ public class ItemInit {
     public static final RegistryObject<FadeApple> FADE_APPLE = ITEMS.register("fade_apple", ()->new FadeApple(new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab).food(FoodInit.FADE_APPLE_PROPERTIES)));
     public static final RegistryObject<Item> SOUL_STONE_SMALL_BUNDLE = ITEMS.register("soul_stone_small_bundle",()-> new Bundle(new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab),ItemInit.SOUL_STONE.get(), Bundle.BundleSize.SMALL));
     public static final RegistryObject<Item> FADE_APPLE_SMALL_BUNDLE = ITEMS.register("fade_apple_small_bundle",()-> new Bundle(new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab),ItemInit.FADE_APPLE.get(), Bundle.BundleSize.SMALL));
+    public static final RegistryObject<ZenHealth> ZEN_HEALTH = ITEMS.register("zen_health",()-> new ZenHealth(new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab)));
 
    // public static final RegistryObject<DaggerOfNoob> DAGGER_OF_NOOB =ITEMS.register("dagger_of_noob",()-> new DaggerOfNoob(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 

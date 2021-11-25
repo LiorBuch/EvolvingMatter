@@ -8,8 +8,14 @@ import com.sus.evolvingmatter.common.entity.SoulGhost;
 import com.sus.evolvingmatter.core.init.BlockEntityInit;
 import com.sus.evolvingmatter.core.init.EntityInit;
 import com.sus.evolvingmatter.core.world.OreGeneration;
+import com.sus.evolvingmatter.util.IDMG;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -43,30 +49,4 @@ public class CommonModEvents {
              */
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-/*
-    @SubscribeEvent
-    public static void registerRenderers(final EntityRenderersEvent.AddLayers event) {
-        if (!FMLEnvironment.production && !GeckoLibMod.DISABLE_IN_DEV) {
-            GeoArmorRenderer.registerArmorRenderer(PotatoArmorItem.class, new PotatoArmorRenderer());
-        }
-    }
-
-    @SubscribeEvent
-    public static void registerRenderers(final FMLClientSetupEvent event) {
-        if (!FMLEnvironment.production && !GeckoLibMod.DISABLE_IN_DEV) {
-            ItemBlockRenderTypes.setRenderLayer(BlockRegistry.BOTARIUM_BLOCK.get(), RenderType.cutout());
-        }
-    }
-*/
 }

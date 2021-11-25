@@ -8,9 +8,9 @@ import net.minecraft.world.entity.Entity;
 
 import javax.annotation.Nullable;
 
-public class ModDamage extends EntityDamageSource {
+public class ProjectileDamage extends EntityDamageSource {
 
-    public ModDamage(String p_19394_, Entity p_19395_) {
+    public ProjectileDamage(String p_19394_, Entity p_19395_) {
         super(p_19394_, p_19395_);
     }
 
@@ -19,7 +19,7 @@ public class ModDamage extends EntityDamageSource {
                 ?
                 (new IndirectEntityDamageSource("onPoison", poisonProjectile, poisonProjectile).setProjectile())
                 :
-                (new IndirectEntityDamageSource("poisonProjectile", poisonProjectile, entity).setIsFire().setProjectile());
+                (new IndirectEntityDamageSource("poisonProjectile", poisonProjectile, entity).setProjectile());
     }
 
     public static DamageSource stupidity(@Nullable Entity entity) {
