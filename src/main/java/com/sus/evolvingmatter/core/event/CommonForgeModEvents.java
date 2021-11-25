@@ -3,6 +3,7 @@ package com.sus.evolvingmatter.core.event;
 
 import com.sus.evolvingmatter.EvolvingMatter;
 import com.sus.evolvingmatter.util.IDMG;
+import com.sus.evolvingmatter.util.ModDamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -38,6 +39,8 @@ public class CommonForgeModEvents {
 
         if (entity instanceof IDMG){
 
+        }else if (event.getSource()== ModDamageSource.ZEN_DAMAGE){
+            event.setCanceled(true);
         }
 
         return true;
