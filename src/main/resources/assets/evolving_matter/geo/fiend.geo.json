@@ -1,0 +1,83 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.fiend",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "all",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "leg1",
+					"parent": "all",
+					"pivot": [-5, 20, 0]
+				},
+				{
+					"name": "lowerleg1",
+					"parent": "leg1",
+					"pivot": [-5, 10, 0],
+					"cubes": [
+						{"origin": [-5, 5.5, -4], "size": [1, 1, 1], "pivot": [-1, -2, -1], "rotation": [-15, 0, 0], "uv": [4, 5]},
+						{"origin": [-6, 0, 0], "size": [2, 10, 2], "pivot": [-5, 10, 2], "rotation": [-15, 0, 0], "uv": [32, 16]},
+						{"origin": [-5, 7, -3], "size": [1, 1, 1], "pivot": [0, 0, 0], "rotation": [-15, 0, 0], "uv": [0, 16]}
+					]
+				},
+				{
+					"name": "upperleg1",
+					"parent": "leg1",
+					"pivot": [-5, 20, 0],
+					"cubes": [
+						{"origin": [-6, 10, 0], "size": [2, 15.5, 2], "uv": [0, 28]}
+					]
+				},
+				{
+					"name": "leg2",
+					"parent": "all",
+					"pivot": [5, 20, 0]
+				},
+				{
+					"name": "lowerleg2",
+					"parent": "leg2",
+					"pivot": [5, 10, 0],
+					"cubes": [
+						{"origin": [4, 0, 0], "size": [2, 10, 2], "pivot": [5, 10, 2], "rotation": [-15, 0, 0], "uv": [9, 28]},
+						{"origin": [4, 7, -3], "size": [1, 1, 1], "pivot": [10, 0, 0], "rotation": [-15, 0, 0], "uv": [0, 3]},
+						{"origin": [4, 5.5, -4], "size": [1, 1, 1], "pivot": [9, -2, -1], "rotation": [-15, 0, 0], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "upperleg2",
+					"parent": "leg2",
+					"pivot": [5, 20, 0],
+					"cubes": [
+						{"origin": [4, 10, 0], "size": [2, 15.5, 2], "uv": [23, 16]}
+					]
+				},
+				{
+					"name": "body",
+					"parent": "all",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{"origin": [-7, 20, -3], "size": [14, 6, 9], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "head",
+					"parent": "all",
+					"pivot": [0, 19, 2],
+					"cubes": [
+						{"origin": [-3, 14, -1], "size": [6, 6, 5], "uv": [0, 16]}
+					]
+				}
+			]
+		}
+	]
+}
