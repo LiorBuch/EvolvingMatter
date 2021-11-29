@@ -133,23 +133,11 @@ public class PoisonProjectile extends AbstractPoisonProjectile implements IAnima
     @Override
     protected void onHitEntity(EntityHitResult result) {
         super.onHitEntity(result);
-        if(!level.isClientSide) {
+        if(!level.isClientSide && result.getEntity() instanceof LivingEntity) {
             Entity entity = result.getEntity();
             Entity owner = getOwner();
             ((LivingEntity) entity).addEffect(new MobEffectInstance(MobEffects.POISON,80,1));
             entity.hurt(ModDamageSource.ZEN_DAMAGE,50F);
-
-                /*
-            if (owner instanceof Player player) {
-                player.hurt(ProjectileDamage.poisonDamage(this, owner), 0.0f);
-                player.hurt(ModDamageSource.zenDamage(owner,entity),50F);
-            } else {
-                entity.hurt(ProjectileDamage.poisonDamage(this, owner), 2.0f);
-                entity.hurt(ModDamageSource.zenDamage(owner,entity),50F);
-
-
-            } */
-
         }
     }
 }

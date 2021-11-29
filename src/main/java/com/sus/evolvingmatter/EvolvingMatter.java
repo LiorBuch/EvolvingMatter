@@ -52,6 +52,7 @@ public class EvolvingMatter
         BlockEntityInit.BLOCK_ENTITIES.register(bus);
         ContainerInit.CONTAINERS.register(bus);
         AttributeInit.ATTRIBUTES.register(bus);
+        EffectInit.EFFECTS.register(bus);
 
 
         //Libraries

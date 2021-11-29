@@ -2,8 +2,10 @@ package com.sus.evolvingmatter.core.event;
 
 import com.sus.evolvingmatter.EvolvingMatter;
 import com.sus.evolvingmatter.client.renderer.EvolutionStandRenderer;
+import com.sus.evolvingmatter.client.renderer.FiendRenderer;
 import com.sus.evolvingmatter.client.renderer.PoisonProjectileRenderer;
 import com.sus.evolvingmatter.client.renderer.SoulGhostRenderer;
+import com.sus.evolvingmatter.common.entity.Fiend;
 import com.sus.evolvingmatter.common.entity.SoulGhost;
 import com.sus.evolvingmatter.core.init.BlockEntityInit;
 import com.sus.evolvingmatter.core.init.EntityInit;
@@ -28,6 +30,7 @@ public class CommonModEvents {
     @SubscribeEvent
     public static void registerAttributes(EntityAttributeCreationEvent event){
         event.put(EntityInit.SOUL_GHOST.get(), SoulGhost.createAttributes().build());
+        event.put(EntityInit.FIEND.get(), Fiend.createAttributes().build());
     }
     @SubscribeEvent
     public static void commonSetup(FMLCommonSetupEvent event){
@@ -38,6 +41,7 @@ public class CommonModEvents {
     public static void registerRenderers(final EntityRenderersEvent.RegisterRenderers event) {
         if (!FMLEnvironment.production && !GeckoLibMod.DISABLE_IN_DEV) {
             event.registerEntityRenderer(EntityInit.SOUL_GHOST.get(), SoulGhostRenderer::new);
+            event.registerEntityRenderer(EntityInit.FIEND.get(), FiendRenderer::new);
             event.registerEntityRenderer(EntityInit.POISONPROJECTILE.get(), PoisonProjectileRenderer::new);
             event.registerBlockEntityRenderer(BlockEntityInit.EVOLUTION_STAND_BLOCK_ENTITY.get(), EvolutionStandRenderer::new);
             /*
