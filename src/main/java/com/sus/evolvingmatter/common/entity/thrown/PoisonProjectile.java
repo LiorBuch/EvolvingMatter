@@ -56,12 +56,12 @@ public class PoisonProjectile extends AbstractPoisonProjectile implements IAnima
     @Override
     public ItemStack getItem() {
         ItemStack stack = this.getItemRaw();
-        return stack.isEmpty() ? new ItemStack(ItemInit.STAFF_OF_ARROWS.get()) : stack;
+        return stack.isEmpty() ? new ItemStack(ItemInit.STAFF_OF_POISON.get()) : stack;
     }
 
     @Override
     public void setItem(ItemStack stack) {
-        super.setItem(ItemInit.STAFF_OF_ARROWS.get().getDefaultInstance());
+        super.setItem(ItemInit.STAFF_OF_POISON.get().getDefaultInstance());
     }
 
     @Override

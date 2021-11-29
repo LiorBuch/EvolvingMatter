@@ -44,7 +44,7 @@ public class AbstractPoisonProjectile extends AbstractHurtingProjectile implemen
     @Override
     public ItemStack getItem() {
         ItemStack stack = this.getItemRaw();
-        return stack.isEmpty() ? new ItemStack(ItemInit.STAFF_OF_ARROWS.get()) : stack;
+        return stack.isEmpty() ? new ItemStack(ItemInit.STAFF_OF_POISON.get()) : stack;
     }
 
     @Override

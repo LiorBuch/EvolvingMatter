@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "evolving_matter:items/staff_of_arrows"
+    "layer0": "evolving_matter:items/staff_of_poison"
   }
 }

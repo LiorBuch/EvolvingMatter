@@ -108,7 +108,8 @@ public class Fiend extends Monster implements IAnimatable, IZenMob {
             if (CURRANT_HP <= 0) {
                 CURRANT_HP=0;
                 this.playHurtSound(damageSource);
-                this.kill();
+                this.setHealth(0F);
+                this.die(ModDamageSource.ZEN_DAMAGE);
             }
             return true;
         }
@@ -126,19 +127,19 @@ public class Fiend extends Monster implements IAnimatable, IZenMob {
     @Nullable
     @Override
     protected SoundEvent getAmbientSound() {
-        return SoundInit.SOUL_GHOST_AMBIENT.get();
+        return SoundInit.FIEND_AMBIENT.get();
     }
 
     @Nullable
     @Override
     protected SoundEvent getHurtSound(DamageSource p_21239_) {
-        return SoundInit.SOUL_GHOST_HURT.get();
+        return SoundInit.FIEND_HURT.get();
     }
 
     @Nullable
     @Override
     protected SoundEvent getDeathSound() {
-        return SoundInit.SOUL_GHOST_DEATH.get();
+        return SoundInit.FIEND_DEATH.get();
     }
 
     @Override
