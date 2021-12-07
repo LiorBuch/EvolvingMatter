@@ -10,6 +10,7 @@
   "block.evolving_matter.soul_stone_ore": "Soul Stone Ore",
   "block.evolving_matter.soul_stone_ore_deepslate": "Soul Stone Ore Deepslate",
   "screen.evolving_matter.evolution_stand": "Evolution Stand",
+  "key.evolving_matter.ability_key": "Ability Key",
 
   "tooltip.zen_health.hp": "Zen Health Point [%s/%s]"
 }

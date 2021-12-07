@@ -1,7 +1,9 @@
 package com.sus.evolvingmatter.common.entity.thrown;
 
 import com.mojang.math.Vector3f;
+import com.sus.evolvingmatter.common.item.StaffOfPoison;
 import com.sus.evolvingmatter.common.item.ZenHealth;
+import com.sus.evolvingmatter.core.init.EffectInit;
 import com.sus.evolvingmatter.core.init.EntityInit;
 import com.sus.evolvingmatter.core.init.ItemInit;
 import com.sus.evolvingmatter.util.ModDamageSource;
@@ -34,15 +36,17 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 public class PoisonProjectile extends AbstractPoisonProjectile implements IAnimatable {
 
-
     private AnimationFactory factory = new AnimationFactory(this);
+    private StaffOfPoison.Stage stage;
 
     public PoisonProjectile(EntityType<? extends PoisonProjectile> entityType, Level world) {
         super(entityType, world);
     }
 
-    public PoisonProjectile(LivingEntity entity, double x, double y, double z, double accelX, double accelY, double accelZ, Level world) {
+    public PoisonProjectile(LivingEntity entity, double x, double y, double z, double accelX, double accelY, double accelZ, Level world, StaffOfPoison.Stage weaponStage) {
         super(EntityInit.POISONPROJECTILE.get(), x, y, z, accelX, accelY, accelZ, world);
+        this.stage=weaponStage;
+
     }
 
     public PoisonProjectile(LivingEntity entity, double x, double y, double z, Level world) {
@@ -132,12 +136,21 @@ public class PoisonProjectile extends AbstractPoisonProjectile implements IAnima
 
     @Override
     protected void onHitEntity(EntityHitResult result) {
+        int sec =20;
         super.onHitEntity(result);
         if(!level.isClientSide && result.getEntity() instanceof LivingEntity) {
-            Entity entity = result.getEntity();
-            Entity owner = getOwner();
-            ((LivingEntity) entity).addEffect(new MobEffectInstance(MobEffects.POISON,80,1));
-            entity.hurt(ModDamageSource.ZEN_DAMAGE,50F);
+            if (stage== StaffOfPoison.Stage.NORMAL){
+                Entity entity = result.getEntity();
+                Entity owner = getOwner();
+                ((LivingEntity) entity).addEffect(new MobEffectInstance(EffectInit.ZEN_POISON_EFFECT.get(),sec*2,1));
+                entity.hurt(ModDamageSource.ZEN_DAMAGE,30F);
+            }
+            if (stage== StaffOfPoison.Stage.BREAKTHROW){
+                Entity entity = result.getEntity();
+                Entity owner = getOwner();
+                ((LivingEntity) entity).addEffect(new MobEffectInstance(EffectInit.ZEN_POISON_EFFECT.get(),sec*5,1));
+                entity.hurt(ModDamageSource.ZEN_DAMAGE,50F);
+            }
         }
     }
 }

@@ -32,4 +32,5 @@ public class ZenPoisonEffect extends MobEffect {
     public boolean isInstantenous() {
         return false;
     }
+
 }

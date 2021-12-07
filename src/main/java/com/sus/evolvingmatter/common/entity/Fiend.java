@@ -43,7 +43,6 @@ public class Fiend extends Monster implements IAnimatable, IZenMob {
     public static final String ZEN_TAG = new ResourceLocation(EvolvingMatter.MOD_ID, "zen_hp").toString();
     float MAX_HP = BASE_HP * MULTIPLIER;
     float CURRANT_HP;
-    CompoundTag entityTag = new CompoundTag();
 
     public Fiend(EntityType<? extends Monster> entityType, Level level) {
         super(entityType, level);
@@ -76,6 +75,7 @@ public class Fiend extends Monster implements IAnimatable, IZenMob {
     public static AttributeSupplier.Builder createAttributes() {
         return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 30D).add(Attributes.FOLLOW_RANGE, 35.0D).add(Attributes.MOVEMENT_SPEED, (double) 0.23F).add(Attributes.ATTACK_DAMAGE, 1D).add(Attributes.SPAWN_REINFORCEMENTS_CHANCE);
     }
+
 
     @Override
     public void addAdditionalSaveData(CompoundTag compoundTag) { //give me a tag and ill upload the data

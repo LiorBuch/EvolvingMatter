@@ -20,15 +20,21 @@ public class ItemInit {
     public static final RegistryObject<SoulStone> SOUL_STONE = ITEMS.register("soul_stone",()-> new SoulStone(new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab)));
     public static final RegistryObject<HeartOfLuck> HEART_OF_LUCK = ITEMS.register("heart_of_luck",()-> new HeartOfLuck(new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab)));
     public static final RegistryObject<HeartOfMobs> HEART_OF_MOBS = ITEMS.register("heart_of_mobs",()-> new HeartOfMobs(new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab)));
+
     public static final RegistryObject<StaffOfTheBlackSmith> STAFF_OF_THE_BLACK_SMITH = ITEMS.register("staff_of_the_black_smith",()-> new StaffOfTheBlackSmith(new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab)));
     public static final RegistryObject<StaffOfArrows> STAFF_OF_ARROWS = ITEMS.register("staff_of_arrows",()-> new StaffOfArrows(new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab), StaffOfArrows.Stage.NORMAL));
-    public static final RegistryObject<StaffOfPoison> STAFF_OF_POISON = ITEMS.register("staff_of_poison",()-> new StaffOfPoison(new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab)));
+    public static final RegistryObject<StaffOfArrows> STAFF_OF_ARROWSB = ITEMS.register("staff_of_arrows_b",()-> new StaffOfArrows(new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab), StaffOfArrows.Stage.BREAKTHROW));
+    public static final RegistryObject<StaffOfArrows> STAFF_OF_ARROWSE = ITEMS.register("staff_of_arrows_e",()-> new StaffOfArrows(new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab), StaffOfArrows.Stage.EVOLUTION));
+    public static final RegistryObject<StaffOfPoison> STAFF_OF_POISON = ITEMS.register("staff_of_poison",()-> new StaffOfPoison(new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab), StaffOfPoison.Stage.NORMAL));
+    public static final RegistryObject<StaffOfPoison> STAFF_OF_POISONB = ITEMS.register("staff_of_poison_b",()-> new StaffOfPoison(new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab), StaffOfPoison.Stage.BREAKTHROW));
+
     public static final RegistryObject<ForgeSpawnEggItem> SOUL_GHOST_SPAWN_EGG = ITEMS.register("soul_ghost_spawn_egg",()-> new ForgeSpawnEggItem(EntityInit.SOUL_GHOST,0xc6cfc6,0x34BD27,new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab).stacksTo(16)));
     public static final RegistryObject<Item> SOUL_STONE_SHARD = ITEMS.register("soul_stone_shard",()->new Item(new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab)));
     public static final RegistryObject<FadeApple> FADE_APPLE = ITEMS.register("fade_apple", ()->new FadeApple(new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab).food(FoodInit.FADE_APPLE_PROPERTIES)));
     public static final RegistryObject<Item> SOUL_STONE_SMALL_BUNDLE = ITEMS.register("soul_stone_small_bundle",()-> new Bundle(new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab),ItemInit.SOUL_STONE.get(), Bundle.BundleSize.SMALL));
     public static final RegistryObject<Item> FADE_APPLE_SMALL_BUNDLE = ITEMS.register("fade_apple_small_bundle",()-> new Bundle(new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab),ItemInit.FADE_APPLE.get(), Bundle.BundleSize.SMALL));
-    public static final RegistryObject<ZenHealth> ZEN_HEALTH = ITEMS.register("zen_health",()-> new ZenHealth(new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab)));
+    public static final RegistryObject<Item> ZEN_HEALTH_MKI = ITEMS.register("zen_health_mki",()-> new ZenHealth(new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab), ZenHealth.HeartLevel.MKI));
+    public static final RegistryObject<Item> ZEN_HEALTH_MKII = ITEMS.register("zen_health_mkii",()-> new ZenHealth(new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab), ZenHealth.HeartLevel.MKII));
 
    // public static final RegistryObject<DaggerOfNoob> DAGGER_OF_NOOB =ITEMS.register("dagger_of_noob",()-> new DaggerOfNoob(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 

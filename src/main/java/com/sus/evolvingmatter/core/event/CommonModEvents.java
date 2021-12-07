@@ -9,6 +9,7 @@ import com.sus.evolvingmatter.common.entity.Fiend;
 import com.sus.evolvingmatter.common.entity.SoulGhost;
 import com.sus.evolvingmatter.core.init.BlockEntityInit;
 import com.sus.evolvingmatter.core.init.EntityInit;
+import com.sus.evolvingmatter.core.init.PacketHandler;
 import com.sus.evolvingmatter.core.world.OreGeneration;
 import com.sus.evolvingmatter.util.IDMG;
 import net.minecraft.world.entity.Entity;
@@ -35,6 +36,7 @@ public class CommonModEvents {
     @SubscribeEvent
     public static void commonSetup(FMLCommonSetupEvent event){
         event.enqueueWork(OreGeneration::registerOres);
+        event.enqueueWork(PacketHandler::init);
     }
 
     @SubscribeEvent

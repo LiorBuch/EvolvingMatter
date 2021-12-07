@@ -41,7 +41,6 @@ public class Bundle extends Item {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
-
         ItemStack itemStack = new ItemStack(bundleItem);
         itemStack.setCount(Mth.randomBetweenInclusive(r,bundleSize.min,bundleSize.max));
         player.drop(itemStack, true, false);

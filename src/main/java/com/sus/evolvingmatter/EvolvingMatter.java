@@ -1,9 +1,15 @@
 package com.sus.evolvingmatter;
 
 import com.sus.evolvingmatter.client.container.screen.EvolutionStandScreen;
+import com.sus.evolvingmatter.client.gui.AbilityCDGui;
+import com.sus.evolvingmatter.client.gui.ZenGui;
+import com.sus.evolvingmatter.common.dimension.BiomeProvider;
+import com.sus.evolvingmatter.common.dimension.ChunkGeneratorMod;
 import com.sus.evolvingmatter.core.init.*;
 import com.sus.evolvingmatter.core.world.OreGeneration;
 import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
@@ -66,8 +72,17 @@ public class EvolvingMatter
     };
 
     private void setup(final FMLCommonSetupEvent event)
-    {
+    {//dim
+        event.enqueueWork(() -> {
+            Registry.register(Registry.CHUNK_GENERATOR, new ResourceLocation(EvolvingMatter.MOD_ID, "chunkgen"),
+                    ChunkGeneratorMod.CODEC);
+            Registry.register(Registry.BIOME_SOURCE, new ResourceLocation(EvolvingMatter.MOD_ID, "biomes"),
+                    BiomeProvider.CODEC);
+        });
+        //GUI
         MenuScreens.register(ContainerInit.EVOLUTION_STAND_MENU.get(), EvolutionStandScreen::new);
+        MinecraftForge.EVENT_BUS.register(new ZenGui());
+        MinecraftForge.EVENT_BUS.register(new AbilityCDGui());
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)
