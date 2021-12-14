@@ -20,6 +20,9 @@ public class SoulStone extends Item implements IEvolvingItem.IMaterial {
         player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED,30,3));
         player.getCooldowns().addCooldown(this,100);
 
+        ItemStack itemstack = player.getItemInHand(hand);
+        itemstack.shrink(1);
+
         return super.use(level, player, hand);
     }
 }

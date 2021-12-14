@@ -2,9 +2,6 @@ package com.sus.evolvingmatter.client.gui;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.sus.evolvingmatter.EvolvingMatter;
-import com.sus.evolvingmatter.common.item.StaffOfArrows;
-import com.sus.evolvingmatter.common.item.ZenHealth;
-import com.sus.evolvingmatter.core.init.PacketHandler;
 import com.sus.evolvingmatter.util.IDMG;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
@@ -50,7 +47,6 @@ public class ZenGui extends Gui {
                 Item item = itemStack.getItem();
                 if (item instanceof IDMG) {
                     if (itemStack.hasTag()) {
-                        //CompoundTag zenHPTag = itemStack.getOrCreateTagElement("hp_amount");
                         RenderSystem.setShaderTexture(0,GUI);
                         // for blit (MatrixStack==????,screen locationX,screen locationY,texture start locationX,texture start locationY,width,height)
                         minecraft.gui.blit(event.getMatrixStack(), posX+100, posY+100, 1, 1, 58, 95);

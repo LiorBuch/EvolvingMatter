@@ -59,6 +59,8 @@ public class HeartOfLuck extends Item {
             level.addFreshEntity(fireworkEntity);
 
 
+        ItemStack itemstack = player.getItemInHand(handIn);
+        itemstack.shrink(1);
         return super.use(level, player, handIn);
     }
 }

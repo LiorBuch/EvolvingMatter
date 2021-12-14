@@ -1,14 +1,12 @@
 package com.sus.evolvingmatter.core.event;
 
 import com.sus.evolvingmatter.EvolvingMatter;
-import com.sus.evolvingmatter.client.renderer.EvolutionStandRenderer;
-import com.sus.evolvingmatter.client.renderer.FiendRenderer;
-import com.sus.evolvingmatter.client.renderer.PoisonProjectileRenderer;
-import com.sus.evolvingmatter.client.renderer.SoulGhostRenderer;
+import com.sus.evolvingmatter.client.renderer.*;
 import com.sus.evolvingmatter.common.entity.Fiend;
 import com.sus.evolvingmatter.common.entity.SoulGhost;
 import com.sus.evolvingmatter.core.init.BlockEntityInit;
 import com.sus.evolvingmatter.core.init.EntityInit;
+import com.sus.evolvingmatter.core.init.ItemInit;
 import com.sus.evolvingmatter.core.init.PacketHandler;
 import com.sus.evolvingmatter.core.world.OreGeneration;
 import com.sus.evolvingmatter.util.IDMG;
@@ -46,6 +44,7 @@ public class CommonModEvents {
             event.registerEntityRenderer(EntityInit.FIEND.get(), FiendRenderer::new);
             event.registerEntityRenderer(EntityInit.POISONPROJECTILE.get(), PoisonProjectileRenderer::new);
             event.registerBlockEntityRenderer(BlockEntityInit.EVOLUTION_STAND_BLOCK_ENTITY.get(), EvolutionStandRenderer::new);
+
             /*
             event.registerBlockEntityRenderer(TileRegistry.BOTARIUM_TILE.get(), BotariumTileRenderer::new);
             event.registerBlockEntityRenderer(TileRegistry.FERTILIZER.get(), FertilizerTileRenderer::new);

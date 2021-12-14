@@ -13,16 +13,16 @@ import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.MobType;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
@@ -45,7 +45,7 @@ public class PoisonProjectile extends AbstractPoisonProjectile implements IAnima
 
     public PoisonProjectile(LivingEntity entity, double x, double y, double z, double accelX, double accelY, double accelZ, Level world, StaffOfPoison.Stage weaponStage) {
         super(EntityInit.POISONPROJECTILE.get(), x, y, z, accelX, accelY, accelZ, world);
-        this.stage=weaponStage;
+        this.stage = weaponStage;
 
     }
 
@@ -72,7 +72,7 @@ public class PoisonProjectile extends AbstractPoisonProjectile implements IAnima
     public void addAdditionalSaveData(CompoundTag nbt) {
         super.addAdditionalSaveData(nbt);
         ItemStack stack = this.getItemRaw();
-        if(!stack.isEmpty())
+        if (!stack.isEmpty())
             nbt.put("Item", stack.save(new CompoundTag()));
     }
 
@@ -86,24 +86,32 @@ public class PoisonProjectile extends AbstractPoisonProjectile implements IAnima
     @Override
     protected void onHit(HitResult result) {
         super.onHit(result);
+        if (!level.isClientSide()) {
+            if (!(stage==StaffOfPoison.Stage.NORMAL)){
+                makePoisonCloud();
+            }
+        }
+        this.discard();
+    }
+
+    @Override
+    protected void onHitBlock(BlockHitResult p_37258_) {
+        super.onHitBlock(p_37258_);
     }
 
     //Animations Starts
-    private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event)
-    {
+    private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.poison_projectile.spin", true));
         return PlayState.CONTINUE;
     }
 
     @Override
-    public void registerControllers(AnimationData data)
-    {
+    public void registerControllers(AnimationData data) {
         data.addAnimationController(new AnimationController(this, "controller", 0, this::predicate));
     }
 
     @Override
-    public AnimationFactory getFactory()
-    {
+    public AnimationFactory getFactory() {
         return this.factory;
     }
     //Animation Ends
@@ -113,7 +121,7 @@ public class PoisonProjectile extends AbstractPoisonProjectile implements IAnima
     public void tick() {
         super.tick();
         if (this.level.isClientSide) {
-            this.level.addParticle(new DustParticleOptions(new Vector3f(Vec3.fromRGB24(0x31D90B)),1.0F) , this.getX(), this.getY() - 0.3D, this.getZ(), this.random.nextGaussian() * 0.05D, -this.getDeltaMovement().y * 0.5D, this.random.nextGaussian() * 0.05D);
+            this.level.addParticle(new DustParticleOptions(new Vector3f(Vec3.fromRGB24(0x31D90B)), 1.0F), this.getX(), this.getY() - 0.3D, this.getZ(), this.random.nextGaussian() * 0.05D, -this.getDeltaMovement().y * 0.5D, this.random.nextGaussian() * 0.05D);
         }
     }
 
@@ -133,24 +141,50 @@ public class PoisonProjectile extends AbstractPoisonProjectile implements IAnima
     }
 
 
-
     @Override
     protected void onHitEntity(EntityHitResult result) {
-        int sec =20;
+        int sec = 20;
         super.onHitEntity(result);
-        if(!level.isClientSide && result.getEntity() instanceof LivingEntity) {
-            if (stage== StaffOfPoison.Stage.NORMAL){
+        if (!level.isClientSide && result.getEntity() instanceof LivingEntity) {
+            if (stage == StaffOfPoison.Stage.NORMAL) {
                 Entity entity = result.getEntity();
                 Entity owner = getOwner();
-                ((LivingEntity) entity).addEffect(new MobEffectInstance(EffectInit.ZEN_POISON_EFFECT.get(),sec*2,1));
-                entity.hurt(ModDamageSource.ZEN_DAMAGE,30F);
+                ((LivingEntity) entity).addEffect(new MobEffectInstance(EffectInit.ZEN_POISON_EFFECT.get(), sec * 2, 1));
+                entity.hurt(ModDamageSource.ZEN_DAMAGE, 30F);
             }
-            if (stage== StaffOfPoison.Stage.BREAKTHROW){
+            if (stage == StaffOfPoison.Stage.BREAKTHROW) {
                 Entity entity = result.getEntity();
                 Entity owner = getOwner();
-                ((LivingEntity) entity).addEffect(new MobEffectInstance(EffectInit.ZEN_POISON_EFFECT.get(),sec*5,1));
-                entity.hurt(ModDamageSource.ZEN_DAMAGE,50F);
+                ((LivingEntity) entity).addEffect(new MobEffectInstance(EffectInit.ZEN_POISON_EFFECT.get(), sec * 5, 1));
+                entity.hurt(ModDamageSource.ZEN_DAMAGE, 50F);
+            }
+            if (stage == StaffOfPoison.Stage.EVOLUTION) {
+                Entity entity = result.getEntity();
+                Entity owner = getOwner();
+                ((LivingEntity) entity).addEffect(new MobEffectInstance(EffectInit.ZEN_POISON_EFFECT.get(), sec * 5, 2));
+                entity.hurt(ModDamageSource.ZEN_DAMAGE, 60F);
             }
         }
+    }
+
+    private void makePoisonCloud() {
+        AreaEffectCloud areaEffectCloud = new AreaEffectCloud(this.level, this.getX(), this.getY(), this.getZ());
+        Entity entity = this.getOwner();
+        if (entity instanceof LivingEntity) {
+            areaEffectCloud.setOwner((LivingEntity) entity);
+        }
+
+        areaEffectCloud.setRadius(3.0F);
+        areaEffectCloud.setRadiusOnUse(-0.5F);
+        areaEffectCloud.setWaitTime(10);
+        areaEffectCloud.setRadiusPerTick(-areaEffectCloud.getRadius() / (float) areaEffectCloud.getDuration());
+
+        //areaEffectCloud.setPotion(potion);
+        int effectLevel = stage == StaffOfPoison.Stage.EVOLUTION ? 2 : 1;
+
+        areaEffectCloud.addEffect(new MobEffectInstance(EffectInit.ZEN_POISON_EFFECT.get(), 20 * 5, effectLevel, false, true, true));
+        areaEffectCloud.setFixedColor(0x0fbf18);
+
+        this.level.addFreshEntity(areaEffectCloud);
     }
 }

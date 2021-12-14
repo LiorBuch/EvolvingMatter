@@ -48,8 +48,8 @@ public class AbilityCDGui extends Gui {
                 RenderSystem.setShaderTexture(0,ABILITY_ICONS);
                 minecraft.gui.blit(event.getMatrixStack(), posX+10, posY+10, 1, 1, 35, 35);
                 minecraft.gui.blit(event.getMatrixStack(), posX+10, posY+50, 1, 37, 35, 35);
-                int i=Math.round(31-((normalCD)/((normalCDTop/31))));
-                int j=Math.round(31-((ultimateCD)/((ultimateCDTop/31))));
+                int i=Math.round(((normalCD)/((normalCDTop/31))));
+                int j=Math.round(((ultimateCD)/((ultimateCDTop/31))));
                 minecraft.gui.blit(event.getMatrixStack(), posX + 12, posY + 12, 36, 3-i, 31, 31);
                 minecraft.gui.blit(event.getMatrixStack(), posX + 12, posY + 52, 68, 3-j, 31, 31);
             }

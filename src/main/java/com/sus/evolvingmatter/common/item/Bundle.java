@@ -45,6 +45,9 @@ public class Bundle extends Item {
         itemStack.setCount(Mth.randomBetweenInclusive(r,bundleSize.min,bundleSize.max));
         player.drop(itemStack, true, false);
 
+        ItemStack itemstack = player.getItemInHand(hand);
+        itemstack.shrink(1);
+
         return super.use(level, player, hand);
     }
 }

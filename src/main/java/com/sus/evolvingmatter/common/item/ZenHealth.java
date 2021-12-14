@@ -122,7 +122,6 @@ public class ZenHealth extends Item implements IDMG {
 
     @Override
     public boolean showDurabilityBar(ItemStack stack) {
-
         return true;
     }
 

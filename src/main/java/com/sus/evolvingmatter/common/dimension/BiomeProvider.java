@@ -20,7 +20,7 @@ public class BiomeProvider extends BiomeSource {
 
     private final Biome biome;
     private final Registry<Biome> biomeRegistry;
-    private static final List<ResourceKey<Biome>> SPAWN = Collections.singletonList(Biomes.SNOWY_TUNDRA);
+    private static final List<ResourceKey<Biome>> SPAWN = Collections.singletonList(Biomes.SUNFLOWER_PLAINS);
 
     public BiomeProvider(Registry<Biome> biomeRegistry) {
         super(getStartBiomes(biomeRegistry));

@@ -54,6 +54,8 @@ public class HeartOfMobs extends Item {
         level.addFreshEntity(fireworkEntity);
 
         //level.playSound((Player)null, player.getX(), player.getY(), player.getZ(), SoundEvents.AMETHYST_CLUSTER_HIT, SoundSource.NEUTRAL, 100F, 50F);
+        ItemStack itemstack = player.getItemInHand(handIn);
+        itemstack.shrink(1);
         return super.use(level, player, handIn);
     }
 }

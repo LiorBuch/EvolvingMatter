@@ -90,7 +90,7 @@ public class StaffOfArrows extends Item implements IEvolvingItem {
                                 vector3f.transform(quaternion);
                                 arrow.shoot((double) vector3f.x(), (double) vector3f.y(), (double) vector3f.z(), 2.5F, 1F);
                                 arrow.isCritArrow();
-                                arrow.setSecondsOnFire(6);
+                                arrow.setSecondsOnFire(10);
                                 level.addFreshEntity(arrow);
                             }
                             ultimateAbilityCD = 0;
@@ -139,11 +139,11 @@ public class StaffOfArrows extends Item implements IEvolvingItem {
                 world.addFreshEntity(arrow);
             }
             if (stageOfWeapon == Stage.BREAKTHROW) {
-                for (int i = 0; i < 4; i++) {
+                for (int i = 0; i < 3; i++) {
                     CustomArrowProjectile arrow = new CustomArrowProjectile(world, player.getX(), player.getY() + 1.5, player.getZ());
 
                     Vec3 vec31 = player.getUpVector(1.0F);
-                    Quaternion quaternion = new Quaternion(new Vector3f(vec31), -15 + (i * 10), false);
+                    Quaternion quaternion = new Quaternion(new Vector3f(vec31), -15 + (i * 15), true);
                     Vec3 vec3 = player.getViewVector(1.0F);
                     Vector3f vector3f = new Vector3f(vec3);
                     vector3f.transform(quaternion);
