@@ -1,5 +1,6 @@
 package com.sus.evolvingmatter.client.container.menu;
 
+import com.sus.evolvingmatter.EvolvingMatter;
 import com.sus.evolvingmatter.common.block.entity.EvolutionStandBlockEntity;
 import com.sus.evolvingmatter.common.item.IEvolvingItem;
 import com.sus.evolvingmatter.core.init.BlockInit;
@@ -39,6 +40,7 @@ public class EvolutionStandMenu extends AbstractContainerMenu {
         this.playerInventory = new InvWrapper(playerInventory);
 
         if (blockEntity != null) {
+            EvolvingMatter.LOGGER.info("Menu Have Been Called");
             blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(h -> {
                 addSlot(new SlotItemHandler(h, 0,28,13));
                 for (int i =0;i<4;i++){ // basic needs

@@ -4,9 +4,9 @@ import com.sus.evolvingmatter.EvolvingMatter;
 import com.sus.evolvingmatter.core.network.ZenHealthNetworkToClient;
 import com.sus.evolvingmatter.core.network.ZenHealthNetworkToServer;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.fmllegacy.network.NetworkDirection;
-import net.minecraftforge.fmllegacy.network.NetworkRegistry;
-import net.minecraftforge.fmllegacy.network.simple.SimpleChannel;
+import net.minecraftforge.network.NetworkDirection;
+import net.minecraftforge.network.NetworkRegistry;
+import net.minecraftforge.network.simple.SimpleChannel;
 
 public final class PacketHandler {
     private PacketHandler(){}

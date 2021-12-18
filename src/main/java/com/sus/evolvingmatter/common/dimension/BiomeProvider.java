@@ -7,6 +7,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeSource;
 import net.minecraft.world.level.biome.Biomes;
+import net.minecraft.world.level.biome.Climate;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
 
 import java.util.Collections;
@@ -20,7 +21,7 @@ public class BiomeProvider extends BiomeSource {
 
     private final Biome biome;
     private final Registry<Biome> biomeRegistry;
-    private static final List<ResourceKey<Biome>> SPAWN = Collections.singletonList(Biomes.SUNFLOWER_PLAINS);
+    private static final List<ResourceKey<Biome>> SPAWN = Collections.singletonList(Biomes.PLAINS);
 
     public BiomeProvider(Registry<Biome> biomeRegistry) {
         super(getStartBiomes(biomeRegistry));
@@ -37,11 +38,6 @@ public class BiomeProvider extends BiomeSource {
     }
 
     @Override
-    public boolean canGenerateStructure(StructureFeature<?> structure) {
-        return false;
-    }
-
-    @Override
     protected Codec<? extends BiomeSource> codec() {
         return CODEC;
     }
@@ -52,7 +48,7 @@ public class BiomeProvider extends BiomeSource {
     }
 
     @Override
-    public Biome getNoiseBiome(int x, int y, int z) {
-        return biome;
+    public Biome getNoiseBiome(int p_186735_, int p_186736_, int p_186737_, Climate.Sampler p_186738_) {
+        return null;
     }
 }

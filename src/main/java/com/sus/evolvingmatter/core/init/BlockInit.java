@@ -1,22 +1,16 @@
 package com.sus.evolvingmatter.core.init;
 
 import com.sus.evolvingmatter.EvolvingMatter;
+import com.sus.evolvingmatter.common.block.AttachementTable;
 import com.sus.evolvingmatter.common.block.DisappearingAnvilBlock;
 import com.sus.evolvingmatter.common.block.EvolotionStand;
-import com.sus.evolvingmatter.common.item.SoulStone;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
-import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-
-import java.security.PublicKey;
-import java.util.function.ToIntFunction;
+import net.minecraftforge.registries.RegistryObject;
 
 public class BlockInit {
 
@@ -29,5 +23,6 @@ public class BlockInit {
     public static final RegistryObject<Block> CLOUD_BLOCK = BLOCKS.register("cloud_block1",()-> new Block(BlockBehaviour.Properties.of(Material.GLASS).sound(SoundType.WOOL).noOcclusion().isSuffocating((p1,p2,p3)-> false).isViewBlocking((p1,p2,p3)-> false)));
     //Block Entities
     public static final RegistryObject<EvolotionStand> EVOLUTION_STAND = BLOCKS.register("evolution_stand",()-> new EvolotionStand(BlockBehaviour.Properties.of(Material.HEAVY_METAL).noOcclusion().requiresCorrectToolForDrops()));
+    public static final RegistryObject<AttachementTable> ATTACHEMENT_TABLE = BLOCKS.register("attachment_table",()-> new AttachementTable(BlockBehaviour.Properties.of(Material.HEAVY_METAL).noOcclusion().requiresCorrectToolForDrops()));
 
 }

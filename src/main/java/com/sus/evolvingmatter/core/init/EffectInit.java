@@ -5,9 +5,9 @@ import com.sus.evolvingmatter.common.effects.ZenPoisonEffect;
 import com.sus.evolvingmatter.common.effects.ZenRegenerationEffect;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
-import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 public class EffectInit {
     public static final DeferredRegister<MobEffect> EFFECTS = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, EvolvingMatter.MOD_ID);

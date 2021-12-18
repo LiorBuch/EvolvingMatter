@@ -3,13 +3,13 @@ package com.sus.evolvingmatter.core.init;
 import com.sus.evolvingmatter.EvolvingMatter;
 import com.sus.evolvingmatter.common.item.ZenHealth;
 import com.sus.evolvingmatter.common.item.*;
+import com.sus.evolvingmatter.common.item.blockitem.AttachmentTableItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.ForgeSpawnEggItem;
-import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-
+import net.minecraftforge.registries.RegistryObject;
 
 
 public class ItemInit {
@@ -64,4 +64,6 @@ public class ItemInit {
             () -> new BlockItem(BlockInit.CLOUD_BLOCK.get(), new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab)));
     public static final RegistryObject<BlockItem> EVOLUTION_STAND_BLOCK = ITEMS.register("evolution_stand_block",
             () -> new BlockItem(BlockInit.EVOLUTION_STAND.get(), new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab)));
+    public static final RegistryObject<BlockItem> ATTACHMENT_TABLE_BLOCK = ITEMS.register("attachment_table",
+            () -> new AttachmentTableItem(BlockInit.ATTACHEMENT_TABLE.get(), new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab)));
 }

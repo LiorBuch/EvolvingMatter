@@ -12,12 +12,16 @@ import net.minecraft.world.level.LevelHeightAccessor;
 import net.minecraft.world.level.NoiseColumn;
 import net.minecraft.world.level.StructureFeatureManager;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.BiomeManager;
+import net.minecraft.world.level.biome.Climate;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkAccess;
 import net.minecraft.world.level.chunk.ChunkGenerator;
+import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.StructureSettings;
+import net.minecraft.world.level.levelgen.blending.Blender;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
@@ -54,7 +58,27 @@ public class ChunkGeneratorMod extends ChunkGenerator {
     }
 
     @Override
-    public void buildSurfaceAndBedrock(WorldGenRegion region, ChunkAccess chunk) {
+    protected Codec<? extends ChunkGeneratorMod> codec() {
+        return CODEC;
+    }
+
+    @Override
+    public ChunkGenerator withSeed(long seed) {
+        return new ChunkGeneratorMod(getBiomeRegistry(), settings);
+    }
+
+    @Override
+    public Climate.Sampler climateSampler() {
+        return null;
+    }
+
+    @Override
+    public void applyCarvers(WorldGenRegion p_187691_, long p_187692_, BiomeManager p_187693_, StructureFeatureManager p_187694_, ChunkAccess p_187695_, GenerationStep.Carving p_187696_) {
+
+    }
+
+    @Override
+    public void buildSurface(WorldGenRegion region, StructureFeatureManager structureFeatureManager, ChunkAccess chunk) {
         BlockState bedrock = Blocks.BEDROCK.defaultBlockState();
         BlockState stone = Blocks.STONE.defaultBlockState();
         ChunkPos chunkpos = chunk.getPos();
@@ -86,18 +110,28 @@ public class ChunkGeneratorMod extends ChunkGenerator {
     }
 
     @Override
-    protected Codec<? extends ChunkGeneratorMod> codec() {
-        return CODEC;
+    public void spawnOriginalMobs(WorldGenRegion p_62167_) {
+
     }
 
     @Override
-    public ChunkGenerator withSeed(long seed) {
-        return new ChunkGeneratorMod(getBiomeRegistry(), settings);
+    public int getGenDepth() {
+        return 0;
     }
 
     @Override
-    public CompletableFuture<ChunkAccess> fillFromNoise(Executor executor, StructureFeatureManager structureFeatureManager, ChunkAccess chunkAccess) {
-        return CompletableFuture.completedFuture(chunkAccess);
+    public CompletableFuture<ChunkAccess> fillFromNoise(Executor p_187748_, Blender p_187749_, StructureFeatureManager p_187750_, ChunkAccess p_187751_) {
+        return CompletableFuture.completedFuture(p_187751_);
+    }
+
+    @Override
+    public int getSeaLevel() {
+        return 0;
+    }
+
+    @Override
+    public int getMinY() {
+        return 0;
     }
 
     @Override

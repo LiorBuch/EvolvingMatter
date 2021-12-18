@@ -120,28 +120,29 @@ public class ZenHealth extends Item implements IDMG {
         return false;
     }
 
+
     @Override
-    public boolean showDurabilityBar(ItemStack stack) {
+    public boolean isBarVisible(ItemStack p_150899_) {
         return true;
     }
 
     @Override
-    public double getDurabilityForDisplay(ItemStack stack) {
-        if(stack.hasTag()) {
-            CompoundTag zenHPTag = stack.getTagElement(ZEN_TAG);
+    public int getBarWidth(ItemStack p_150900_) {
+        if(p_150900_.hasTag()) {
+            CompoundTag zenHPTag = p_150900_.getTagElement(ZEN_TAG);
             float currentHP = zenHPTag.getFloat("hp_amount");
             if (currentHP<0)
                 currentHP=0;
             if (currentHP==heartLevel.base*heartLevel.multi)
                 currentHP=currentHP-1;
-            return 1- ((double) currentHP / (double) heartLevel.base*heartLevel.multi);
+            return (int) (1- ( currentHP /heartLevel.base*heartLevel.multi));
         }
         return 1;
     }
 
-
     @Override
-    public int getRGBDurabilityForDisplay(ItemStack stack) {
-        return Mth.hsvToRgb(Math.max(0.0F, (float) (1.0F - getDurabilityForDisplay(stack))) / 3.0F, 1.0F, 1.0F);
+    public int getBarColor(ItemStack p_150901_) {
+        return Mth.hsvToRgb(Math.max(0.0F, (float) (1.0F - getBarWidth(p_150901_))) / 3.0F, 1.0F, 1.0F);
     }
+
 }

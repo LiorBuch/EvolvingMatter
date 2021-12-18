@@ -1,6 +1,5 @@
 package com.sus.evolvingmatter.common.block.entity;
 
-import com.sus.evolvingmatter.EvolvingMatter;
 import com.sus.evolvingmatter.common.item.IEvolvingItem;
 import com.sus.evolvingmatter.core.init.BlockEntityInit;
 import net.minecraft.core.BlockPos;
@@ -9,13 +8,8 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -32,16 +26,15 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class EvolutionStandBlockEntity extends BlockEntity implements IAnimatable{
-
+public class AttachmentTableBlockEntity  extends BlockEntity implements IAnimatable {
 
     private final ItemStackHandler itemHandler = createHandler();
     private final LazyOptional<IItemHandler> handler = LazyOptional.of(() -> itemHandler);
     public int ticks = 0;
     private final AnimationFactory factory = new AnimationFactory(this);
 
-    public EvolutionStandBlockEntity(BlockPos pos, BlockState state) {
-        super(BlockEntityInit.EVOLUTION_STAND_BLOCK_ENTITY.get(), pos, state);
+    public AttachmentTableBlockEntity(BlockPos pos, BlockState state) {
+        super(BlockEntityInit.ATTACHMENT_TABLE_BLOCK_ENTITY.get(), pos, state);
     }
 
 
@@ -51,8 +44,6 @@ public class EvolutionStandBlockEntity extends BlockEntity implements IAnimatabl
 
     private ItemStackHandler createHandler() {
         final int INPUT_SLOT=0;
-        final int OUTPUT_SLOT=6;
-        final int CATALYST_SLOT=5;
 
         return new ItemStackHandler(7) {
             @Override
@@ -70,16 +61,11 @@ public class EvolutionStandBlockEntity extends BlockEntity implements IAnimatabl
             // item blacklist define
             @Override
             public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
-                if (slot==OUTPUT_SLOT){
-                    return false;
-                }
+
                 if (slot==INPUT_SLOT){
                     return stack.getItem() instanceof IEvolvingItem; // interface for modded tools
                 }
-                if (slot==CATALYST_SLOT){
-                    return stack.getItem() instanceof IEvolvingItem.ICatalyst;
-                }
-                return stack.getItem() instanceof IEvolvingItem.IMaterial;
+                return stack.getItem() instanceof IEvolvingItem.IGems;
             }
         };
     }
@@ -106,27 +92,15 @@ public class EvolutionStandBlockEntity extends BlockEntity implements IAnimatabl
         return save(new CompoundTag());
     }
 
-
     @Override
     public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
         load(pkt.getTag());
     }
 
-    private <E extends BlockEntity & IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        event.getController().transitionLengthTicks = 0;
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.evolution_stand.book", true));
-        return PlayState.CONTINUE;
-    }
-    private <E extends BlockEntity & IAnimatable> PlayState predicate2(AnimationEvent<E> event) {
-        event.getController().transitionLengthTicks = 0;
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.evolution_stand.particles", true));
-        return PlayState.CONTINUE;
-    }
-//animations
+    //animations
+
     @Override
     public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController(this, "controller", 0, this::predicate));
-        data.addAnimationController(new AnimationController(this, "controller2", 0, this::predicate2));
 
     }
 

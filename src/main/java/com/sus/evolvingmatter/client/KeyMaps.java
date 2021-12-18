@@ -3,7 +3,7 @@ package com.sus.evolvingmatter.client;
 import com.mojang.blaze3d.platform.InputConstants;
 import com.sus.evolvingmatter.EvolvingMatter;
 import net.minecraft.client.KeyMapping;
-import net.minecraftforge.fmlclient.registry.ClientRegistry;
+import net.minecraftforge.client.ClientRegistry;
 
 public class KeyMaps {
     private KeyMaps(){

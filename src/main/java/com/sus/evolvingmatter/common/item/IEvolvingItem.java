@@ -9,5 +9,6 @@ public interface IEvolvingItem {
     }
     interface IMaterial{
     }
+    interface IGems{}
 
 }
