@@ -40,6 +40,7 @@ public class CommonModEvents {
             event.registerEntityRenderer(EntityInit.SOUL_GHOST.get(), SoulGhostRenderer::new);
             event.registerEntityRenderer(EntityInit.FIEND.get(), FiendRenderer::new);
             event.registerEntityRenderer(EntityInit.POISONPROJECTILE.get(), PoisonProjectileRenderer::new);
+            event.registerEntityRenderer(EntityInit.ICICLE_PROJECTILE.get(), IcicleProjectileRenderer::new);
             event.registerBlockEntityRenderer(BlockEntityInit.EVOLUTION_STAND_BLOCK_ENTITY.get(), EvolutionStandRenderer::new);
             event.registerBlockEntityRenderer(BlockEntityInit.ATTACHMENT_TABLE_BLOCK_ENTITY.get(),AttachmentTableRenderer::new);
 

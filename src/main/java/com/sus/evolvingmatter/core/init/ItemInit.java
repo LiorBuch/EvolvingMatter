@@ -4,8 +4,11 @@ import com.sus.evolvingmatter.EvolvingMatter;
 import com.sus.evolvingmatter.common.item.ZenHealth;
 import com.sus.evolvingmatter.common.item.*;
 import com.sus.evolvingmatter.common.item.blockitem.AttachmentTableItem;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorMaterials;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.material.Material;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -16,7 +19,7 @@ public class ItemInit {
     //DeferredRegister
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, EvolvingMatter.MOD_ID);
     //Special Items
-
+    public static final RegistryObject<ZenArmor> ZEN_ARMOR = ITEMS.register("zen_armor",()-> new ZenArmor(ArmorMaterials.NETHERITE, EquipmentSlot.CHEST,new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab)));
     public static final RegistryObject<SoulStone> SOUL_STONE = ITEMS.register("soul_stone",()-> new SoulStone(new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab)));
     public static final RegistryObject<HeartOfLuck> HEART_OF_LUCK = ITEMS.register("heart_of_luck",()-> new HeartOfLuck(new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab)));
     public static final RegistryObject<HeartOfMobs> HEART_OF_MOBS = ITEMS.register("heart_of_mobs",()-> new HeartOfMobs(new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab)));
@@ -25,9 +28,12 @@ public class ItemInit {
     public static final RegistryObject<StaffOfArrows> STAFF_OF_ARROWS = ITEMS.register("staff_of_arrows",()-> new StaffOfArrows(new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab), StaffOfArrows.Stage.NORMAL));
     public static final RegistryObject<StaffOfArrows> STAFF_OF_ARROWSB = ITEMS.register("staff_of_arrows_b",()-> new StaffOfArrows(new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab), StaffOfArrows.Stage.BREAKTHROW));
     public static final RegistryObject<StaffOfArrows> STAFF_OF_ARROWSE = ITEMS.register("staff_of_arrows_e",()-> new StaffOfArrows(new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab), StaffOfArrows.Stage.EVOLUTION));
+
     public static final RegistryObject<StaffOfPoison> STAFF_OF_POISON = ITEMS.register("staff_of_poison",()-> new StaffOfPoison(new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab), StaffOfPoison.Stage.NORMAL));
     public static final RegistryObject<StaffOfPoison> STAFF_OF_POISONB = ITEMS.register("staff_of_poison_b",()-> new StaffOfPoison(new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab), StaffOfPoison.Stage.BREAKTHROW));
     public static final RegistryObject<StaffOfPoison> STAFF_OF_POISONE = ITEMS.register("staff_of_poison_e",()-> new StaffOfPoison(new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab), StaffOfPoison.Stage.EVOLUTION));
+
+    public static final RegistryObject<StaffOfIce> STAFF_OF_ICE = ITEMS.register("staff_of_ice",()-> new StaffOfIce(new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab), StaffOfIce.Stage.NORMAL));
 
     public static final RegistryObject<ForgeSpawnEggItem> SOUL_GHOST_SPAWN_EGG = ITEMS.register("soul_ghost_spawn_egg",()-> new ForgeSpawnEggItem(EntityInit.SOUL_GHOST,0xc6cfc6,0x34BD27,new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab).stacksTo(16)));
     public static final RegistryObject<Item> SOUL_STONE_SHARD = ITEMS.register("soul_stone_shard",()->new Item(new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab)));
