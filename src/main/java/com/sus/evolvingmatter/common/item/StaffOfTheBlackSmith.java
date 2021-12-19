@@ -34,7 +34,7 @@ public class StaffOfTheBlackSmith extends Item implements IEvolvingItem {
     }
 
     @Override
-    public Item getEvolution() {
-        return Items.DIAMOND_AXE; // next evolution item
+    public ItemStack getEvolution() {
+        return null; // next evolution item
     }
 }

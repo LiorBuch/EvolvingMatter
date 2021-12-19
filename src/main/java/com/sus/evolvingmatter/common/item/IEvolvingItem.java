@@ -1,9 +1,10 @@
 package com.sus.evolvingmatter.common.item;
 
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 
 public interface IEvolvingItem {
-    Item getEvolution();
+    ItemStack getEvolution();
 
     interface ICatalyst {
     }

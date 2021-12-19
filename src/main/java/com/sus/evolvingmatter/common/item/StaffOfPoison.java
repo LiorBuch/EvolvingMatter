@@ -22,8 +22,13 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.function.Consumer;
 
-public class StaffOfPoison extends Item implements IAnimatable {
+public class StaffOfPoison extends Item implements IAnimatable,IEvolvingItem {
     public AnimationFactory factory = new AnimationFactory(this);
+
+    @Override
+    public ItemStack getEvolution() {
+        return null;
+    }
 
     public enum Stage{
         NORMAL,

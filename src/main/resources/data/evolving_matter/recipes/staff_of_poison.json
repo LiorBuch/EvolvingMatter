@@ -1,0 +1,8 @@
+{
+  "type": "evolving_matter:evolving",
+  "base": "evolving_matter:staff_of_arrows_e",
+  "addition1":"evolving_matter:soul_stone",
+  "addition2":"evolving_matter:", missing
+  "catalyst": "evolving_matter:fade_apple",
+  "result": "evolving_matter:staff_of_poison"
+}

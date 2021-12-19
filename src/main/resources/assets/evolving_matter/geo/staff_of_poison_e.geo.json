@@ -3,7 +3,7 @@
 	"minecraft:geometry": [
 		{
 			"description": {
-				"identifier": "geometry.staff_of_poison_e",
+				"identifier": "geometry.staff_of_posion_e",
 				"texture_width": 32,
 				"texture_height": 32,
 				"visible_bounds_width": 2,

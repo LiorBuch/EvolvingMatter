@@ -8,6 +8,7 @@ import com.sus.evolvingmatter.client.gui.AbilityCDGui;
 import com.sus.evolvingmatter.client.gui.ZenGui;
 import com.sus.evolvingmatter.common.entity.thrown.CustomArrowProjectile;
 import com.sus.evolvingmatter.common.entity.thrown.PoisonProjectile;
+import com.sus.evolvingmatter.core.init.ItemInit;
 import com.sus.evolvingmatter.util.IDMG;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.TextComponent;
@@ -32,8 +33,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 public class StaffOfArrows extends Item implements IEvolvingItem {
 
     @Override
-    public Item getEvolution() {
-        return this;
+    public ItemStack getEvolution() {
+        return new ItemStack(ItemInit.STAFF_OF_POISON.get());
     }
 
     public enum Stage {

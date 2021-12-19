@@ -4,5 +4,38 @@
   "texture_size": [
     32,
     32
-  ]
+  ],
+  "display": {
+    "thirdperson_righthand": {
+      "translation": [
+        0,
+        -7.25,
+        1.5
+      ]
+    },
+    "firstperson_righthand": {
+      "translation": [
+        0,
+        -6,
+        -0.25
+      ]
+    },
+    "gui": {
+      "rotation": [
+        17.97,
+        31.67,
+        -14.74
+      ],
+      "translation": [
+        0,
+        -8,
+        0
+      ],
+      "scale": [
+        0.8,
+        0.8,
+        0.8
+      ]
+    }
+  }
 }
