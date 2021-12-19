@@ -1,6 +1,7 @@
 package com.sus.evolvingmatter.core.crafting;
 
 import com.google.gson.JsonObject;
+import com.sus.evolvingmatter.EvolvingMatter;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
@@ -34,6 +35,7 @@ public class EvolvingRecipe implements Recipe<Container> {
         return this.base.test(container.getItem(0))&&
                 (this.addition1.test(container.getItem(1))||this.addition1.test(container.getItem(2))||this.addition1.test(container.getItem(3))||this.addition1.test(container.getItem(4)))&&
                 (this.addition2.test(container.getItem(1))||this.addition2.test(container.getItem(2))||this.addition2.test(container.getItem(3))||this.addition2.test(container.getItem(4)));
+
     }
 
     @Override

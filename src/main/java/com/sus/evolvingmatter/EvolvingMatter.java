@@ -5,6 +5,7 @@ import com.sus.evolvingmatter.client.gui.AbilityCDGui;
 import com.sus.evolvingmatter.client.gui.ZenGui;
 import com.sus.evolvingmatter.common.dimension.BiomeProvider;
 import com.sus.evolvingmatter.common.dimension.ChunkGeneratorMod;
+import com.sus.evolvingmatter.core.crafting.RecipeInit;
 import com.sus.evolvingmatter.core.init.*;
 import com.sus.evolvingmatter.core.world.OreGeneration;
 import net.minecraft.client.gui.screens.MenuScreens;
@@ -59,6 +60,7 @@ public class EvolvingMatter
         ContainerInit.CONTAINERS.register(bus);
         AttributeInit.ATTRIBUTES.register(bus);
         EffectInit.EFFECTS.register(bus);
+        RecipeInit.RECIPES.register(bus);
 
 
 

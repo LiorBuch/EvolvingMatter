@@ -1,6 +1,9 @@
 package com.sus.evolvingmatter.common.item;
 
 import com.sus.evolvingmatter.common.entity.thrown.IcicleProjectile;
+import com.sus.evolvingmatter.core.init.SoundInit;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
@@ -30,6 +33,7 @@ public class StaffOfIce extends Item implements IAnimatable, IEvolvingItem {
     public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
         player.getCooldowns().addCooldown(this, (int) (sec*2.5));
         if(!world.isClientSide) {
+            world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundInit.FIEND_AMBIENT.get(), SoundSource.NEUTRAL, 0.5F, 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
             IcicleProjectile icicleProjectile = new IcicleProjectile(player, player.getX(), player.getY() + 1, player.getZ(), 0.0D, -0.1D, 0.0D, world);
             icicleProjectile.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 0.0F);
             world.addFreshEntity(icicleProjectile);

@@ -1,8 +1,19 @@
 {
   "type": "evolving_matter:evolution",
-  "base": "evolving_matter:staff_of_arrows_e",
-  "addition1":"evolving_matter:soul_stone",
-  "addition2":"evolving_matter:ancient_orb",
-  "catalyst": "evolving_matter:fade_apple",
-  "result": "evolving_matter:staff_of_poison"
+  "base": {
+    "item": "evolving_matter:staff_of_arrows_e"
+  },
+  "addition1": {
+    "item": "evolving_matter:soul_stone",
+    "count": 10
+  },
+  "addition2": {
+    "item": "evolving_matter:ancient_orb"
+  },
+  "catalyst": {
+    "item": "evolving_matter:fade_apple"
+  },
+  "result": {
+    "item": "evolving_matter:staff_of_poison"
+  }
 }
