@@ -1,14 +1,11 @@
 package com.sus.evolvingmatter.client.container.menu;
 
-import com.sus.evolvingmatter.EvolvingMatter;
-import com.sus.evolvingmatter.common.block.entity.EvolutionStandBlockEntity;
 import com.sus.evolvingmatter.common.item.IEvolvingItem;
 import com.sus.evolvingmatter.core.init.BlockInit;
 import com.sus.evolvingmatter.core.init.ContainerInit;
-import com.sus.evolvingmatter.util.FakeSlot;
+import com.sus.evolvingmatter.core.crafting.EvolvingRecipe;
+import com.sus.evolvingmatter.core.crafting.RecipeInit;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.Container;
-import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
@@ -16,18 +13,19 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 import net.minecraftforge.items.wrapper.InvWrapper;
-import org.lwjgl.system.CallbackI;
 
 
 public class EvolutionStandMenu extends AbstractContainerMenu {
     private BlockEntity blockEntity;
     private Player playerEntity;
     private IItemHandler playerInventory;
+
+    private EvolvingRecipe evolvingRecipe;
+    protected final RecipeType<?> recipeType = RecipeInit.EVOLVING;
 
     private final ResultContainer resultContainer = new ResultContainer();
     private final CraftingContainer craftingContainer = new CraftingContainer(this,3,3);
@@ -40,7 +38,6 @@ public class EvolutionStandMenu extends AbstractContainerMenu {
         this.playerInventory = new InvWrapper(playerInventory);
 
         if (blockEntity != null) {
-            EvolvingMatter.LOGGER.info("Menu Have Been Called");
             blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(h -> {
                 addSlot(new SlotItemHandler(h, 0,28,13));
                 for (int i =0;i<4;i++){ // basic needs

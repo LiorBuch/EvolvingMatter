@@ -1,6 +1,5 @@
 package com.sus.evolvingmatter.common.block.entity;
 
-import com.sus.evolvingmatter.EvolvingMatter;
 import com.sus.evolvingmatter.common.item.IEvolvingItem;
 import com.sus.evolvingmatter.core.init.BlockEntityInit;
 import net.minecraft.core.BlockPos;
@@ -9,13 +8,8 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;

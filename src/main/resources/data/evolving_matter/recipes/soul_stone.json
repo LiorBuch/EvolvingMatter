@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "evolving_matter:soul_stone",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "evolving_matter:soul_stone_shard"
+    }
+  },
+  "result": {
+    "item": "evolving_matter:soul_stone"
+  }
+}
