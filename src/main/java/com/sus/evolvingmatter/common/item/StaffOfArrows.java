@@ -6,10 +6,13 @@ import com.sus.evolvingmatter.EvolvingMatter;
 import com.sus.evolvingmatter.client.KeyMaps;
 import com.sus.evolvingmatter.client.gui.AbilityCDGui;
 import com.sus.evolvingmatter.client.gui.ZenGui;
+import com.sus.evolvingmatter.client.renderer.StaffOfArrowsRenderer;
+import com.sus.evolvingmatter.client.renderer.StaffOfPoisonRenderer;
 import com.sus.evolvingmatter.common.entity.thrown.CustomArrowProjectile;
 import com.sus.evolvingmatter.common.entity.thrown.PoisonProjectile;
 import com.sus.evolvingmatter.core.init.ItemInit;
 import com.sus.evolvingmatter.util.IDMG;
+import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.sounds.SoundEvent;
@@ -28,13 +31,67 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.client.IItemRenderProperties;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import software.bernie.geckolib3.core.IAnimatable;
+import software.bernie.geckolib3.core.PlayState;
+import software.bernie.geckolib3.core.builder.AnimationBuilder;
+import software.bernie.geckolib3.core.controller.AnimationController;
+import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
+import software.bernie.geckolib3.core.manager.AnimationData;
+import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class StaffOfArrows extends Item implements IEvolvingItem {
+import java.util.function.Consumer;
+
+public class StaffOfArrows extends Item implements IEvolvingItem, IAnimatable {
+    public AnimationFactory factory = new AnimationFactory(this);
 
     @Override
     public ItemStack getEvolution() {
         return new ItemStack(ItemInit.STAFF_OF_POISON.get());
+    }
+
+    @Override
+    public void registerControllers(AnimationData data) {
+        data.addAnimationController(new AnimationController(this, "controller", 20, this::predicate));
+
+    }
+
+    private <P extends Item & IAnimatable> PlayState predicate(AnimationEvent<P> event)
+    {
+        if (this.stageOfWeapon== StaffOfArrows.Stage.EVOLUTION) {
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.staff_of_arrows.strip", true));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.staff_of_arrows.strip2", true));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.staff_of_arrows.rotate", true));
+        }
+        if (this.stageOfWeapon== StaffOfArrows.Stage.BREAKTHROW){
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.staff_of_arrows.strip", true));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.staff_of_arrows.strip2", true));
+        }
+
+        return PlayState.CONTINUE;
+    }
+
+    @Override
+    public void initializeClient(Consumer<IItemRenderProperties> consumer) {
+        super.initializeClient(consumer);
+        consumer.accept(new IItemRenderProperties() {
+            private final BlockEntityWithoutLevelRenderer renderer = new StaffOfArrowsRenderer();
+
+            @Override
+            public BlockEntityWithoutLevelRenderer getItemStackRenderer() {
+                return renderer;
+            }
+        });
+    }
+
+    public StaffOfArrows.Stage getStageOfWeapon(){
+        return this.stageOfWeapon;
+    }
+
+    @Override
+    public AnimationFactory getFactory() {
+        return this.factory;
     }
 
     public enum Stage {
@@ -124,7 +181,6 @@ public class StaffOfArrows extends Item implements IEvolvingItem {
         CompoundTag cooldownTag = itemStack.getOrCreateTagElement("ability_cooldown");
         cooldownTag.putFloat("normal_amount", 160);
         cooldownTag.putFloat("ultimate_amount", 800);
-        cooldownTag.putFloat("anti_spam", 60);
         itemTag.put("ability_cooldown", cooldownTag);
         return itemTag;
 

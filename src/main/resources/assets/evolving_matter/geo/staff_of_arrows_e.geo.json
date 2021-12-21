@@ -1,0 +1,53 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.staffofarrows",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "bone",
+					"pivot": [0, 1, 0],
+					"cubes": [
+						{"origin": [-1, 1, -1], "size": [2, 18, 2], "uv": [0, 14]},
+						{"origin": [-1, 19, -1], "size": [2, 2, 7], "uv": [9, 14]},
+						{"origin": [-1, 21, 4], "size": [2, 6, 2], "uv": [0, 0]},
+						{"origin": [-1, 27, -5], "size": [2, 2, 11], "uv": [0, 0]},
+						{"origin": [-1, 25, -5], "size": [2, 2, 2], "pivot": [0, 26, -4], "rotation": [0, 45, 0], "uv": [21, 16]},
+						{"origin": [-2, 0, -2], "size": [4, 3, 4], "uv": [16, 0]}
+					]
+				},
+				{
+					"name": "strip",
+					"parent": "bone",
+					"pivot": [-1, 17, 1],
+					"cubes": [
+						{"origin": [-1, 17, 0], "size": [0, 1, 1], "uv": [9, 14]}
+					]
+				},
+				{
+					"name": "strip2",
+					"parent": "bone",
+					"pivot": [2, 28, -2],
+					"cubes": [
+						{"origin": [1.1, 28, -2], "size": [0, 1, 1], "uv": [8, 8]}
+					]
+				},
+				{
+					"name": "ball",
+					"parent": "bone",
+					"pivot": [0, 23, 0],
+					"cubes": [
+						{"origin": [-0.5, 23, -3], "size": [1, 1, 6], "uv": [21, 8]}
+					]
+				}
+			]
+		}
+	]
+}

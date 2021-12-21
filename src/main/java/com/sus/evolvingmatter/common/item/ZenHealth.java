@@ -31,7 +31,7 @@ public class ZenHealth extends Item implements IDMG {
     public enum HeartLevel {
         MKI(0.05F,100F,1F)
         ,MKII(0.1F,300F,1F)
-        ,MKIII(0.2F,550F,1F)
+        ,MKIII(0.3F,550F,1F)
         ,MKIV(0.1F,200F,1F)
         ,MKV(0.1F,200F,1F)
         ,MKVI(0.1F,200F,1F)

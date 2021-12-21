@@ -31,6 +31,7 @@
 			}
 		},
 		"animation.staff_of_poison_e.sticks": {
+			"loop": true,
 			"animation_length": 2.08,
 			"bones": {
 				"rotatingsticks": {

@@ -30,6 +30,10 @@ public class StaffOfPoison extends Item implements IAnimatable,IEvolvingItem {
         return null;
     }
 
+    public Stage getStageOfWeapon(){
+        return this.stageOfWeapon;
+    }
+
     public enum Stage{
         NORMAL,
         BREAKTHROW,
@@ -70,6 +74,11 @@ public class StaffOfPoison extends Item implements IAnimatable,IEvolvingItem {
         if (this.stageOfWeapon==Stage.EVOLUTION) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.staff_of_poison_e.sticks", true));
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.staff_of_poison_e.cube", true));
+            return PlayState.CONTINUE;
+        }
+        if (this.stageOfWeapon==Stage.BREAKTHROW){
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.staff_of_poison_e.sticks", true));
+            return PlayState.CONTINUE;
         }
         return PlayState.CONTINUE;
     }

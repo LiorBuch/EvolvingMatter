@@ -19,7 +19,6 @@ public class ItemInit {
     //DeferredRegister
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, EvolvingMatter.MOD_ID);
     //Special Items
-    public static final RegistryObject<ZenArmor> ZEN_ARMOR = ITEMS.register("zen_armor",()-> new ZenArmor(ArmorMaterials.NETHERITE, EquipmentSlot.CHEST,new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab)));
     public static final RegistryObject<SoulStone> SOUL_STONE = ITEMS.register("soul_stone",()-> new SoulStone(new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab)));
     public static final RegistryObject<HeartOfLuck> HEART_OF_LUCK = ITEMS.register("heart_of_luck",()-> new HeartOfLuck(new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab)));
     public static final RegistryObject<HeartOfMobs> HEART_OF_MOBS = ITEMS.register("heart_of_mobs",()-> new HeartOfMobs(new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab)));
