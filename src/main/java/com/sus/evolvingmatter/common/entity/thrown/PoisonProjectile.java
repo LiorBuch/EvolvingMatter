@@ -35,17 +35,26 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 public class PoisonProjectile extends AbstractPoisonProjectile implements IAnimatable {
+    public enum AbilityType{
+        NORMAL,
+        ULTIMATE,
+        NONABILITY,
+        POWER
+    }
 
     private AnimationFactory factory = new AnimationFactory(this);
     private StaffOfPoison.Stage stage;
+    private AbilityType abilityType;
+    public Vec3 hitLocation;
 
     public PoisonProjectile(EntityType<? extends PoisonProjectile> entityType, Level world) {
         super(entityType, world);
     }
 
-    public PoisonProjectile(LivingEntity entity, double x, double y, double z, double accelX, double accelY, double accelZ, Level world, StaffOfPoison.Stage weaponStage) {
+    public PoisonProjectile(LivingEntity entity, double x, double y, double z, double accelX, double accelY, double accelZ, Level world, StaffOfPoison.Stage weaponStage,AbilityType abilityType) {
         super(EntityInit.POISONPROJECTILE.get(), x, y, z, accelX, accelY, accelZ, world);
         this.stage = weaponStage;
+        this.abilityType=abilityType;
 
     }
 
@@ -61,6 +70,12 @@ public class PoisonProjectile extends AbstractPoisonProjectile implements IAnima
     public ItemStack getItem() {
         ItemStack stack = this.getItemRaw();
         return stack.isEmpty() ? new ItemStack(ItemInit.STAFF_OF_POISON.get()) : stack;
+    }
+    public Vec3 getHitLocation(){
+        return this.hitLocation;
+    }
+    public Vec3 sendHitLocation(Vec3 vec3){
+        return vec3;
     }
 
     @Override
@@ -87,16 +102,33 @@ public class PoisonProjectile extends AbstractPoisonProjectile implements IAnima
     protected void onHit(HitResult result) {
         super.onHit(result);
         if (!level.isClientSide()) {
-            if (!(stage==StaffOfPoison.Stage.NORMAL)){
-                makePoisonCloud();
+            if (stage==StaffOfPoison.Stage.EVOLUTION){
+                makePoisonCloud(3.0F,5);
+                this.discard();
+            }
+            if (abilityType==AbilityType.NORMAL){
+                makePoisonCloud(6.0F,0);
+                this.discard();
+            }
+            if (abilityType==AbilityType.ULTIMATE){
+                StaffOfPoison.hitLocation=result.getLocation();
+                StaffOfPoison.didIHit=true;
+                this.discard();
+            }
+            if (abilityType==AbilityType.NONABILITY){
+                this.discard();
             }
         }
-        this.discard();
+
     }
 
     @Override
     protected void onHitBlock(BlockHitResult p_37258_) {
         super.onHitBlock(p_37258_);
+        if (abilityType==AbilityType.POWER){
+            this.discard();
+        }
+
     }
 
     //Animations Starts
@@ -167,19 +199,19 @@ public class PoisonProjectile extends AbstractPoisonProjectile implements IAnima
         }
     }
 
-    private void makePoisonCloud() {
+    private void makePoisonCloud(float radius, int waitTime) {
         AreaEffectCloud areaEffectCloud = new AreaEffectCloud(this.level, this.getX(), this.getY(), this.getZ());
         Entity entity = this.getOwner();
         if (entity instanceof LivingEntity) {
             areaEffectCloud.setOwner((LivingEntity) entity);
         }
 
-        areaEffectCloud.setRadius(3.0F);
+        areaEffectCloud.setRadius(radius);
         areaEffectCloud.setRadiusOnUse(-0.5F);
-        areaEffectCloud.setWaitTime(10);
+        areaEffectCloud.setWaitTime(waitTime);
         areaEffectCloud.setRadiusPerTick(-areaEffectCloud.getRadius() / (float) areaEffectCloud.getDuration());
 
-        //areaEffectCloud.setPotion(potion);
+
         int effectLevel = stage == StaffOfPoison.Stage.EVOLUTION ? 2 : 1;
 
         areaEffectCloud.addEffect(new MobEffectInstance(EffectInit.ZEN_POISON_EFFECT.get(), 20 * 5, effectLevel, false, true, true));

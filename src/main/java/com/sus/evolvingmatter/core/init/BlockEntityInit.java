@@ -1,6 +1,7 @@
 package com.sus.evolvingmatter.core.init;
 
 import com.sus.evolvingmatter.EvolvingMatter;
+import com.sus.evolvingmatter.common.block.entity.AncientBoxBlockEntity;
 import com.sus.evolvingmatter.common.block.entity.AttachmentTableBlockEntity;
 import com.sus.evolvingmatter.common.block.entity.EvolutionStandBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -18,6 +19,9 @@ public final class BlockEntityInit {
 
     public static final RegistryObject<BlockEntityType<AttachmentTableBlockEntity>> ATTACHMENT_TABLE_BLOCK_ENTITY  = BLOCK_ENTITIES.register("attachment_table",
             ()-> BlockEntityType.Builder.of(AttachmentTableBlockEntity::new, BlockInit.ATTACHEMENT_TABLE.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<AncientBoxBlockEntity>> ANCIENT_BOX_BLOCK_ENTITY  = BLOCK_ENTITIES.register("ancient_table",
+            ()-> BlockEntityType.Builder.of(AncientBoxBlockEntity::new, BlockInit.ANCIENT_BOX.get()).build(null));
 
 
 }

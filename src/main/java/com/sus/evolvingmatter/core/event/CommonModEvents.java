@@ -43,6 +43,7 @@ public class CommonModEvents {
             event.registerEntityRenderer(EntityInit.ICICLE_PROJECTILE.get(), IcicleProjectileRenderer::new);
             event.registerBlockEntityRenderer(BlockEntityInit.EVOLUTION_STAND_BLOCK_ENTITY.get(), EvolutionStandRenderer::new);
             event.registerBlockEntityRenderer(BlockEntityInit.ATTACHMENT_TABLE_BLOCK_ENTITY.get(),AttachmentTableRenderer::new);
+            event.registerBlockEntityRenderer(BlockEntityInit.ANCIENT_BOX_BLOCK_ENTITY.get(),AncientBoxRenderer::new);
 
             /*
             event.registerBlockEntityRenderer(TileRegistry.BOTARIUM_TILE.get(), BotariumTileRenderer::new);

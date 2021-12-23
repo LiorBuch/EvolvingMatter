@@ -44,7 +44,7 @@ public class AbilityCDGui extends Gui {
             LocalPlayer localPlayer = minecraft.player;
             int posX = event.getWindow().getGuiScaledWidth()/2;
             int posY = event.getWindow().getGuiScaledHeight()/2;
-            if (localPlayer.getItemBySlot(EquipmentSlot.MAINHAND).getItem() instanceof IEvolvingItem){
+            if (localPlayer.getItemBySlot(EquipmentSlot.MAINHAND).getItem() instanceof IEvolvingItem.IArrowsGUI){
                 RenderSystem.setShaderTexture(0,ABILITY_ICONS);
                 minecraft.gui.blit(event.getMatrixStack(), posX+10, posY+10, 1, 1, 35, 35);
                 minecraft.gui.blit(event.getMatrixStack(), posX+10, posY+50, 1, 37, 35, 35);

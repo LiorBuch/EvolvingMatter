@@ -72,4 +72,6 @@ public class ItemInit {
             () -> new BlockItem(BlockInit.EVOLUTION_STAND.get(), new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab)));
     public static final RegistryObject<BlockItem> ATTACHMENT_TABLE_BLOCK = ITEMS.register("attachment_table",
             () -> new AttachmentTableItem(BlockInit.ATTACHEMENT_TABLE.get(), new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab)));
+    public static final RegistryObject<BlockItem> ANCIENT_BOX_BLOCK = ITEMS.register("ancient_box_block",
+            () -> new AttachmentTableItem(BlockInit.ANCIENT_BOX.get(), new Item.Properties().tab(EvolvingMatter.EvolvingMatterTab)));
 }

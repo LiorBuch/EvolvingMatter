@@ -28,6 +28,12 @@ public final class SoundInit {
 
     public static final RegistryObject<SoundEvent> FIEND_DEATH = SOUNDS.register("fiend_death",
             ()-> new SoundEvent(new ResourceLocation(EvolvingMatter.MOD_ID,"entity.fiend.death")));
+    //Spells
+    public static final RegistryObject<SoundEvent> ARROW_SHOT = SOUNDS.register("shot_arrow",
+            ()-> new SoundEvent(new ResourceLocation(EvolvingMatter.MOD_ID,"item.staff_of_arrows.sho")));
+
+    public static final RegistryObject<SoundEvent> ICE_SHOT = SOUNDS.register("spell_ice",
+            ()-> new SoundEvent(new ResourceLocation(EvolvingMatter.MOD_ID,"item.staff_of_ice.shot")));
 
 
 

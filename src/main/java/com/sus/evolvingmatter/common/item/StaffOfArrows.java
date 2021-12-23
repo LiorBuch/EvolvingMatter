@@ -11,6 +11,7 @@ import com.sus.evolvingmatter.client.renderer.StaffOfPoisonRenderer;
 import com.sus.evolvingmatter.common.entity.thrown.CustomArrowProjectile;
 import com.sus.evolvingmatter.common.entity.thrown.PoisonProjectile;
 import com.sus.evolvingmatter.core.init.ItemInit;
+import com.sus.evolvingmatter.core.init.SoundInit;
 import com.sus.evolvingmatter.util.IDMG;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.nbt.CompoundTag;
@@ -43,7 +44,7 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.function.Consumer;
 
-public class StaffOfArrows extends Item implements IEvolvingItem, IAnimatable {
+public class StaffOfArrows extends Item implements IEvolvingItem, IAnimatable,IEvolvingItem.IArrowsGUI {
     public AnimationFactory factory = new AnimationFactory(this);
 
     @Override
@@ -53,17 +54,22 @@ public class StaffOfArrows extends Item implements IEvolvingItem, IAnimatable {
 
     @Override
     public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController(this, "controller", 20, this::predicate));
+        data.addAnimationController(new AnimationController(this, "controllerb", 20, this::predicateB));
+        data.addAnimationController(new AnimationController(this, "controllere", 20, this::predicateE));
 
     }
-
-    private <P extends Item & IAnimatable> PlayState predicate(AnimationEvent<P> event)
-    {
+    private <P extends Item & IAnimatable> PlayState predicateE(AnimationEvent<P> event){
         if (this.stageOfWeapon== StaffOfArrows.Stage.EVOLUTION) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.staff_of_arrows.strip", true));
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.staff_of_arrows.strip2", true));
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.staff_of_arrows.rotate", true));
         }
+        return PlayState.CONTINUE;
+    }
+
+    private <P extends Item & IAnimatable> PlayState predicateB(AnimationEvent<P> event)
+    {
+
         if (this.stageOfWeapon== StaffOfArrows.Stage.BREAKTHROW){
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.staff_of_arrows.strip", true));
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.staff_of_arrows.strip2", true));
@@ -121,7 +127,7 @@ public class StaffOfArrows extends Item implements IEvolvingItem, IAnimatable {
             if (player.getMainHandItem() == itemStack) {
                 if (KeyMaps.keyAbility.isDown() && (stageOfWeapon == Stage.BREAKTHROW || stageOfWeapon == Stage.EVOLUTION)) {
                     if (normalAbilityCD == 160) {
-                        level.playSound(player, player, SoundEvents.DISPENSER_LAUNCH, SoundSource.AMBIENT, 1F, 1F);
+                        level.playSound(player, player, SoundInit.ARROW_SHOT.get(), SoundSource.AMBIENT, 1F, 1F);
                         if (!level.isClientSide) {
                             CustomArrowProjectile arrow = new CustomArrowProjectile(level, player.getX(), player.getY() + 1.5, player.getZ());
                             arrow.setCritAbility(true);
@@ -136,7 +142,6 @@ public class StaffOfArrows extends Item implements IEvolvingItem, IAnimatable {
                 }
                 if (KeyMaps.keyUltimate.isDown() && stageOfWeapon == Stage.EVOLUTION) {
                     if (ultimateAbilityCD == 800) {
-                        level.playSound(player, player, SoundEvents.GENERIC_EXPLODE, SoundSource.AMBIENT, 1F, 1F);
                         if (!level.isClientSide) {
                             level.playSound(player, player, SoundEvents.GENERIC_EXPLODE, SoundSource.AMBIENT, 1F, 1F);
                             for (int i = 0; i < 72; i++) {
@@ -190,6 +195,7 @@ public class StaffOfArrows extends Item implements IEvolvingItem, IAnimatable {
     public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
         player.getCooldowns().addCooldown(this, sec * 2);
         if (!world.isClientSide) {
+            world.playSound(player, player, SoundEvents.ARROW_SHOOT, SoundSource.AMBIENT, 1F, 1F);
             if (stageOfWeapon == Stage.NORMAL) {
                 CustomArrowProjectile arrow = new CustomArrowProjectile(world, player.getX(), player.getY() + 1.5, player.getZ());
                 arrow.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 0.0F);

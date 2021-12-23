@@ -1,6 +1,7 @@
 package com.sus.evolvingmatter.core.init;
 
 import com.sus.evolvingmatter.EvolvingMatter;
+import com.sus.evolvingmatter.common.block.AncientBox;
 import com.sus.evolvingmatter.common.block.AttachementTable;
 import com.sus.evolvingmatter.common.block.DisappearingAnvilBlock;
 import com.sus.evolvingmatter.common.block.EvolotionStand;
@@ -24,5 +25,7 @@ public class BlockInit {
     //Block Entities
     public static final RegistryObject<EvolotionStand> EVOLUTION_STAND = BLOCKS.register("evolution_stand",()-> new EvolotionStand(BlockBehaviour.Properties.of(Material.HEAVY_METAL).noOcclusion().requiresCorrectToolForDrops()));
     public static final RegistryObject<AttachementTable> ATTACHEMENT_TABLE = BLOCKS.register("attachment_table",()-> new AttachementTable(BlockBehaviour.Properties.of(Material.HEAVY_METAL).noOcclusion().requiresCorrectToolForDrops()));
+    public static final RegistryObject<AncientBox> ANCIENT_BOX = BLOCKS.register("ancient_box",()-> new AncientBox(BlockBehaviour.Properties.of(Material.HEAVY_METAL).noOcclusion().requiresCorrectToolForDrops()));
+
 
 }
